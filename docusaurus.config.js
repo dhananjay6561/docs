@@ -568,6 +568,7 @@ fbq('track', 'PageView');`,
     ],
   ],
 
+  clientModules: [require.resolve("./src/metaPixelRouteTracker.js")],
   scripts: [
     {
       src: "/docs/scripts/feedback.js",
