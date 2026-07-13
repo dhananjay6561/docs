@@ -158,6 +158,7 @@ module.exports = {
     // Meta Pixel Code
     {
       tagName: "script",
+      attributes: {},
       innerHTML: `!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -171,6 +172,7 @@ fbq('track', 'PageView');`,
     },
     {
       tagName: "noscript",
+      attributes: {},
       innerHTML: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2006330080011702&ev=PageView&noscript=1" />`,
     },
     // End Meta Pixel Code
