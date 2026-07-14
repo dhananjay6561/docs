@@ -173,7 +173,7 @@ fbq('track', 'PageView');`,
     {
       tagName: "noscript",
       attributes: {},
-      innerHTML: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2006330080011702&ev=PageView&noscript=1" />`,
+      innerHTML: `<img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2006330080011702&ev=PageView&noscript=1" />`,
     },
     // End Meta Pixel Code
   ],

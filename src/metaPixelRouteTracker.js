@@ -4,7 +4,7 @@
 // explicitly here.
 export function onRouteDidUpdate({location, previousLocation}) {
   if (previousLocation && location.pathname !== previousLocation.pathname) {
-    if (typeof window !== "undefined" && typeof window.fbq === "function") {
+    if (typeof window.fbq === "function") {
       window.fbq("track", "PageView");
     }
   }
