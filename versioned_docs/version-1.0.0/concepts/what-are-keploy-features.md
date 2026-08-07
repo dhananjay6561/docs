@@ -14,7 +14,9 @@ keywords:
 
 Keploy captures all the API calls and subsequent network traffic served by the application. You can use any existing API management tools like Postman, curl to generate test-case.
 
-<img src="/docs/img/record-api.gif?raw=true" width="80%" alt="API Tools"/>
+<video autoPlay loop muted playsInline width="1074" height="782" style={{width:'80%',height:'auto'}} aria-label="API Tools">
+  <source src="/docs/img/record-api.mp4" type="video/mp4" />
+</video>
 
 ### 2. Automatically mock Mutations
 
@@ -28,7 +30,9 @@ Please check list of currently supported dependencies in [Go, Java and Node](htt
 
 Keploy can safely replay writes or mutations by capturing from local or other environments and replaying without API chaining.
 
-<img src="/docs/gif/record-replay.gif?raw=true" width="80%" alt="API Tools"/>
+<video autoPlay loop muted playsInline width="800" height="348" style={{width:'80%',height:'auto'}} aria-label="API Tools">
+  <source src="/docs/gif/record-replay.mp4" type="video/mp4" />
+</video>
 
 [Idempotency](/concepts/general-glossary.md#2-idempotency) guarantees are also **not required** in the application. Multiple Reads after write operations can be replicated automatically too.
 
@@ -49,7 +53,9 @@ Keploy has [native integrations](/concepts/general-glossary.md#4-interoperabilit
 Code coverage will be reported with existing and Keploy recorded test cases and can also be integrated in
 existing CI pipelines easily.
 
-<img src="/docs/gif/replay-tc.gif?raw=true" alt="Keploy Integration with Testing Libraries"/>
+<video autoPlay loop muted playsInline width="800" height="450" style={{maxWidth:'100%',height:'auto'}} aria-label="Keploy Integration with Testing Libraries">
+  <source src="/docs/gif/replay-tc.mp4" type="video/mp4" />
+</video>
 
 ### 5. Easy Integration Framework for new Libraries
 
