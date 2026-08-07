@@ -191,6 +191,18 @@ module.exports = {
         },
       };
     },
+    // D11: emit full source maps for the client bundle so first-party JS is
+    // debuggable in production (error tracking / DevTools). Server bundle keeps
+    // its default — no new dependency, no runtime impact, just extra .map files.
+    function clientSourceMapsPlugin() {
+      return {
+        name: "client-source-maps",
+        configureWebpack(_config, isServer) {
+          if (isServer) return {};
+          return {devtool: "source-map"};
+        },
+      };
+    },
     "docusaurus-tailwindcss-loader",
     [
       "docusaurus-plugin-llms",
