@@ -116,21 +116,31 @@ export default function DocItem(props) {
   );
   const schemaTypeFromFrontMatter =
     frontMatter?.schemaType || frontMatter?.schema_type;
+  const docTags = frontMatter?.tags || [];
   const isApi =
     frontMatter?.apiReference === true ||
     frontMatter?.type === "api" ||
-    (frontMatter?.tags || []).includes?.("api");
+    docTags.includes?.("api") ||
+    docTags.includes?.("api-testing") ||
+    // API-reference doc paths (suites, endpoints, CLI, SDK install).
+    /\/running-keploy\/(api-testing-|public-api|cli-commands)|\/server\/sdk-installation\//.test(
+      metadata?.permalink || ""
+    );
   const isBlog =
     frontMatter?.type === "blog" ||
     frontMatter?.blog === true ||
-    (frontMatter?.tags || []).includes?.("blog");
+    docTags.includes?.("blog");
+  // Every Keploy doc is a technical article, so default to TechArticle rather
+  // than the generic Article (both are Article subtypes accepting the same
+  // properties as articleSchema below — no shape change, just a precise type).
+  // API-reference pages use the more specific APIReference.
   const schemaType = schemaTypeFromFrontMatter
     ? schemaTypeFromFrontMatter
     : isApi
       ? "APIReference"
       : isBlog
         ? "BlogPosting"
-        : "Article";
+        : "TechArticle";
   const authorList = toPersonList(frontMatter?.author || frontMatter?.authors);
   const maintainerList = toPersonList(frontMatter?.maintainer);
   const contributorList = toPersonList(frontMatter?.contributor);
