@@ -147,6 +147,10 @@ export default function DocItem(props) {
   const socialImage = image
     ? toAbsoluteUrl(siteConfig?.url, imageWithBaseUrl)
     : null;
+  // Article schema requires an `image`; fall back to the site-wide default
+  // social card (the same 1200x630 og:image set in docusaurus.config.js) when
+  // a doc has no front-matter image, so every Article carries a valid image.
+  const articleImage = socialImage || "https://keploy.io/images/keploy-hero.png";
   const normalizedMetaKeywords = Array.isArray(metaKeywords)
     ? metaKeywords.join(", ")
     : metaKeywords;
@@ -196,6 +200,7 @@ export default function DocItem(props) {
           "@type": schemaType,
           headline: title,
           description,
+          image: [articleImage],
           ...(modifiedTime ? {dateModified: modifiedTime} : {}),
           // datePublished falls back to the last-modified time so every doc
           // carries a freshness signal even when front matter omits `date`.
