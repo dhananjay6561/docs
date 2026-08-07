@@ -244,7 +244,10 @@ export default function DocItem(props) {
   return (
     <>
       <Head>
-        <title>{title}</title>
+        {/* Suffix differentiates the <title> from the on-page <h1> (which is
+            also `title`), clearing SEMrush "Duplicate content in h1 and title"
+            across all doc pages. */}
+        <title>{`${title} | Keploy Docs`}</title>
         {description && <meta name="description" content={description} />}
         {normalizedMetaKeywords && (
           <meta name="keywords" content={normalizedMetaKeywords} />
