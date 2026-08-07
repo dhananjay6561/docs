@@ -127,10 +127,10 @@ export default function DocItem(props) {
   const schemaType = schemaTypeFromFrontMatter
     ? schemaTypeFromFrontMatter
     : isApi
-      ? "APIReference"
-      : isBlog
-        ? "BlogPosting"
-        : "Article";
+    ? "APIReference"
+    : isBlog
+    ? "BlogPosting"
+    : "Article";
   const authorList = toPersonList(frontMatter?.author || frontMatter?.authors);
   const maintainerList = toPersonList(frontMatter?.maintainer);
   const contributorList = toPersonList(frontMatter?.contributor);
@@ -150,7 +150,8 @@ export default function DocItem(props) {
   // Article schema requires an `image`; fall back to the site-wide default
   // social card (the same 1200x630 og:image set in docusaurus.config.js) when
   // a doc has no front-matter image, so every Article carries a valid image.
-  const articleImage = socialImage || "https://keploy.io/images/keploy-hero.png";
+  const articleImage =
+    socialImage || "https://keploy.io/images/keploy-hero.png";
   const normalizedMetaKeywords = Array.isArray(metaKeywords)
     ? metaKeywords.join(", ")
     : metaKeywords;
