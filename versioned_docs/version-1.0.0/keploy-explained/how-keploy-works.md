@@ -18,9 +18,7 @@ export KEPLOY_MODE="record"
 
 Now, when the application serves an API, all the unique network interactions are stored within Keploy server as a test-case.
 
-<video autoPlay loop muted playsInline width="562" height="356" style={{maxWidth:'100%',height:'auto'}} aria-label="How it works">
-  <source src="/docs/gif/how-keploy-works.mp4" type="video/mp4" />
-</video>
+<video autoPlay loop muted playsInline width="562" height="356" style={{maxWidth:'100%',height:'auto'}} aria-label="How it works"><source src="/docs/gif/how-keploy-works.mp4" type="video/mp4" /></video>
 
 ### Step 2 : Replay Test-Cases
 
@@ -43,6 +41,4 @@ You can test with Keploy locally or can integrate Keploy with popular testing-fr
 
 > **Note:** You can generate test cases from any environment which has all the infrastructure dependencies setup. Please consider using this to generate tests from low-traffic environments first. The deduplication feature necessary for high-traffic environments is currently experimental.
 
-<video autoPlay loop muted playsInline width="800" height="348" style={{maxWidth:'100%',height:'auto'}} aria-label="How it works">
-  <source src="/docs/gif/record-replay.mp4" type="video/mp4" />
-</video>
+<video autoPlay loop muted playsInline width="800" height="348" style={{maxWidth:'100%',height:'auto'}} aria-label="How it works"><source src="/docs/gif/record-replay.mp4" type="video/mp4" /></video>

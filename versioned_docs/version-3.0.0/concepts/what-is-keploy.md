@@ -39,9 +39,7 @@ Now, when the application serves an API, all the unique network interactions are
 test-case.
 
 <div style={{backgroundColor:'white', padding:'10px', display:'inline-block', borderRadius:'8px'}}>
-  <video autoPlay loop muted playsInline width="562" height="356" style={{maxWidth:'100%',height:'auto'}} aria-label="Test Case Generator">
-  <source src="/docs/gif/how-keploy-works.mp4" type="video/mp4" />
-</video>
+  <video autoPlay loop muted playsInline width="562" height="356" style={{maxWidth:'100%',height:'auto'}} aria-label="Test Case Generator"><source src="/docs/gif/how-keploy-works.mp4" type="video/mp4" /></video>
 </div>
 
 ### Step 2 : Replay Test-Cases

@@ -47,6 +47,7 @@ ArgoCD
 Arkade
 Asana
 Auditability
+autoPlay
 backoff
 behaviour
 borderRadius
@@ -136,6 +137,7 @@ NUnit
 Onboarding
 orderId
 params
+playsInline
 pm2
 podSelector
 PodTemplate[Ss]pec
