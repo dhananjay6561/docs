@@ -42,8 +42,14 @@ function bootstrapPixel() {
 // Defer the (non-critical, third-party) pixel until the main thread is idle so
 // it never competes with hydration / LCP. Falls back to a timeout on browsers
 // without requestIdleCallback (e.g. Safari).
+//
+// Guarded so rapid SPA navigations before the idle callback fires can't queue
+// multiple timers — we only ever schedule the bootstrap once (bootstrapPixel
+// also no-ops if window.fbq already exists, so this is belt-and-suspenders).
+let bootstrapScheduled = false;
 function scheduleBootstrap() {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined" || bootstrapScheduled) return;
+  bootstrapScheduled = true;
   const ric =
     window.requestIdleCallback ||
     function (cb) {
