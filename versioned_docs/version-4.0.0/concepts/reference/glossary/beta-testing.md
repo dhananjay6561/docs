@@ -2,7 +2,7 @@
 id: beta-testing
 title: Beta Testing
 sidebar_label: Beta Testing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+description: What is beta testing? Learn its purpose, common types, and where it fits in the software release cycle before a product ships to all users.
 tags:
   - explanation
   - Glossary

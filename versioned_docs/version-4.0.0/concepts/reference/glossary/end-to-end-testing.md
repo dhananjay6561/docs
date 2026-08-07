@@ -2,7 +2,7 @@
 id: end-to-end-testing
 title: Creating end to end tests with Keploy
 sidebar_label: End To End Testing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+description: What is end-to-end testing, and how to create E2E tests with Keploy by recording and replaying real API traffic across your services.
 tags:
   - explanation
   - Glossary

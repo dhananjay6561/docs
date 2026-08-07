@@ -1,7 +1,7 @@
 ---
 id: k8s-proxy
 title: K8s Record Replay
-description: The following sample app to test Keploy integration capabilities using NextJS,Drizzle and Postgres.
+description: Record and replay API tests inside a Kubernetes cluster using the Keploy proxy — capture live traffic and rerun it as tests with no code changes.
 tags:
   - K8s
   - Microservices

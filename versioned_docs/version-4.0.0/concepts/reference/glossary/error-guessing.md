@@ -2,7 +2,7 @@
 id: error-guessing
 title: Error Guessing
 sidebar_label: Error Guessing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+description: What is error guessing in software testing? An experience-based technique for uncovering defects that formal test cases miss, with practical examples.
 tags:
   - explanation
   - glossary
