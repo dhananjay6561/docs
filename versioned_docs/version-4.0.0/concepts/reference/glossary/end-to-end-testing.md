@@ -45,7 +45,7 @@ Despite the challenges, E2E testing is an important part of the software develop
 
 Keploy generate E2E API tests with built-in-mocks or stubs by recording your application network calls making your testing process not only faster than unit tests but also incredibly efficient.
 
-<img src="https://keploy.io/docs/gif/record-tc.gif"/>
+<img src="https://keploy.io/docs/gif/record-tc.gif" alt="Keploy recording end-to-end API test cases from live application traffic"/>
 
 ### How Keploy works?
 

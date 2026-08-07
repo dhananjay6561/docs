@@ -20,14 +20,14 @@ Assertions define the **"Pass/Fail"** criteria for your tests. While standard ch
 ### 1. Selecting Fields to Assert
 Choose specifically which parts of a JSON response Keploy should validate during a replay.
 
-<img src="/docs/img/schema-assertion.png?raw=true"/>
+<img src="/docs/img/schema-assertion.png?raw=true" alt="Schema assertion configuration selecting response fields on a Keploy API test"/>
 
 **Example Context:** In this window, we are targeting a `GET` request on the `/visits/-1` endpoint that expects a `400` status code. Under **Response Fields**, specific keys like `className` and `exMessage` are selected. Toggling these ensures Keploy validates that these fields are returned as the correct data type (strings) during every replay.
 
 ### 2. Multi-Type Assertions
 Stack different assertion types, such as verifying a status code while simultaneously checking if a specific field contains a certain value.
 
-<img src="/docs/img/multi-assertion.png?raw=true"/>
+<img src="/docs/img/multi-assertion.png?raw=true" alt="Multiple assertion types applied to a single Keploy API test"/>
 
 **Example Context:** This setup enforces two rules simultaneously:
 1. **Status Code**: Validates that the server returns a `201` (Created).

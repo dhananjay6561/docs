@@ -32,13 +32,13 @@ To reuse data, you define a mapping that tells Keploy exactly where to look in a
 ### 2. Injection into Requests
 Injection allows you to replace static values with dynamic variables, ensuring your tests remain flexible across different environments and data states.
 
-<img src="/docs/img/var-injection.png?raw=true"/>
+<img src="/docs/img/var-injection.png?raw=true" alt="Injecting a dynamic variable into a Keploy API test request"/>
 
 **Example Context:** This view shows the **Request Details** for an API call to the `/owners` endpoint. By defining the method (e.g., **POST**), you can then use placeholders like `{{owner_id}}` in the URL path or body. Keploy will automatically swap the placeholder with the actual value captured during test execution.
 
 ### 3. Global Variable Management
 Global variables serve as the centralized source of truth for your testing environment.
 
-<img src="/docs/img/global-vars.png?raw=true"/>
+<img src="/docs/img/global-vars.png?raw=true" alt="Configuring global variables in Keploy API testing"/>
 
 **Example Context:** The **Global Variables** dashboard allows you to manage workspace-wide data. This includes static entries like the **base URL** and dynamic **Global Custom Functions**. For instance, `generateCompanyId()` is a function that returns a unique string starting with `COMP_` followed by a timestamp, ensuring unique identifiers for every test run.
