@@ -2,6 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
+import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
@@ -9,8 +10,48 @@ import styles from "./styles.module.css";
 export default function Security() {
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
+  const team = [
+    {
+      name: "Neha Gupta",
+      image: "https://avatars.githubusercontent.com/u/15074229?v=4",
+      sameAs: "https://twitter.com/know_neha",
+    },
+    {
+      name: "Shubham Jain",
+      image: "https://avatars.githubusercontent.com/u/12831254?v=4",
+      sameAs: "https://twitter.com/slayerjain",
+    },
+  ];
+  // CollectionPage of Person entities so search engines / AI can resolve the
+  // Keploy leadership team (name, photo, social profile) as structured people.
+  const leadershipSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Keploy Leadership",
+    url: `${siteConfig.url}/docs/Leadership`,
+    isPartOf: {"@type": "WebSite", url: siteConfig.url},
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: team.map((person, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "Person",
+          name: person.name,
+          image: person.image,
+          worksFor: {"@type": "Organization", name: "Keploy"},
+          sameAs: [person.sameAs],
+        },
+      })),
+    },
+  };
   return (
     <Layout title="Leadership" permalink="/Leadership" description="<head />">
+      <Head>
+        <script type="application/ld+json">
+          {JSON.stringify(leadershipSchema)}
+        </script>
+      </Head>
       <div className="my-15 mx-auto w-auto">
         <ul className="text-center">
           <li className="my-7">

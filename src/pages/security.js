@@ -2,6 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
+import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
@@ -9,12 +10,38 @@ import styles from "./styles.module.css";
 export default function Security() {
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
+  // WebPage + security ContactPoint so the responsible-disclosure channel is
+  // machine-readable (this page is linked from every doc footer).
+  const securitySchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Keploy Security Practices and Policies",
+    url: `${siteConfig.url}/docs/security`,
+    description:
+      "Learn how Keploy ensures data protection, privacy, and secure testing — Keploy's security measures, policies, and responsible-disclosure process.",
+    isPartOf: {"@type": "WebSite", url: siteConfig.url},
+    publisher: {
+      "@type": "Organization",
+      name: "Keploy",
+      url: "https://keploy.io",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "security",
+        email: "hello@keploy.io",
+      },
+    },
+  };
   return (
     <Layout
       title="Keploy Security"
       permalink="/security"
       description="<head />"
     >
+      <Head>
+        <script type="application/ld+json">
+          {JSON.stringify(securitySchema)}
+        </script>
+      </Head>
       <header className={clsx("hero hero--primary", styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title text-black">
