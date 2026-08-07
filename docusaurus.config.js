@@ -3,6 +3,7 @@
 import {themes as prismThemes} from "prism-react-renderer";
 const path = require("path");
 const fs = require("fs");
+const remarkImageSize = require("./src/remark/remarkImageSize");
 import {visit} from "unist-util-visit";
 const FontPreloadPlugin = require("webpack-font-preload-plugin");
 
@@ -468,6 +469,12 @@ module.exports = {
                 },
               {},
             ],
+            // D5 (CLS): stamp intrinsic width/height onto raw <img> tags so the
+            // browser reserves layout space. Docusaurus already sizes Markdown
+            // images natively, so this only touches hand-written <img>.
+            // Dependency-free; skips remote/relative/webp/svg and never
+            // overwrites author dimensions.
+            remarkImageSize,
           ],
         },
         // Will be passed to @docusaurus/plugin-content-blog
