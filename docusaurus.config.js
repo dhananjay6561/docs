@@ -2,6 +2,7 @@
 
 import {themes as prismThemes} from "prism-react-renderer";
 const path = require("path");
+const remarkFaqSchema = require("./src/remark/remarkFaqSchema");
 const fs = require("fs");
 import {visit} from "unist-util-visit";
 const FontPreloadPlugin = require("webpack-font-preload-plugin");
@@ -484,6 +485,9 @@ fbq('track', 'PageView');`,
                 },
               {},
             ],
+            // Emit FAQPage JSON-LD (Question/Answer) for FAQ docs so they are
+            // eligible for FAQ rich results and AI extraction.
+            remarkFaqSchema,
           ],
         },
         // Will be passed to @docusaurus/plugin-content-blog
