@@ -310,3 +310,9 @@ npm run coverage
 Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
 
 Happy coding! ✨👩‍💻👨‍💻✨
+
+## Related
+
+- [Node.js MongoDB Sample](/docs/quickstart/crud-nodejs/) — Node + MongoDB CRUD.
+- [Node.js Express Mongoose Sample](/docs/quickstart/samples-nodejs/) — closely related Express app.
+- [Sample JavaScript Apps](/docs/quickstart/javascript-filter/) — browse all JS quickstarts.

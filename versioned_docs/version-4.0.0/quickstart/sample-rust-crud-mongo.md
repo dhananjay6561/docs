@@ -138,3 +138,9 @@ We get the following output in the terminal -
 
 ![TestRun](/img/rust-mongo-rest-test-run-2.png?raw=true)
 _Voila!! Our testcases has passed 🌟_
+
+## Related
+
+- [GraphQL Application with MongoDB](/docs/quickstart/samples-rust/) — another Rust + MongoDB sample.
+- [Rust Sample Application](/docs/quickstart/samples-rust-wrap/) — Rust wrap-mode sample.
+- [Sample Rust Apps](/docs/quickstart/rust-filter/) — browse all Rust quickstarts.

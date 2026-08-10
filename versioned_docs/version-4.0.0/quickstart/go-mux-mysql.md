@@ -249,3 +249,10 @@ We will get output something like this:
 ### Wrapping it up 🎉
 
 Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+
+## Related
+
+- [Sample Golang Apps](/docs/quickstart/golang-filter/) — browse more Go samples.
+- [Sample Product Catalog App (Golang)](/docs/quickstart/samples-mux/) — Mux with Postgres.
+- [Sample CRUD App (Golang)](/docs/quickstart/samples-fasthttp/) — another Go SQL app.
+- [Echo SQL Sample Application](/docs/quickstart/samples-echo/) — another Go SQL sample.

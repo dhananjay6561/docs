@@ -212,3 +212,10 @@ Here `delay` is the time it takes for your application to get started, after whi
 `buildDelay` is the time that it takes for the image to get built. This is useful when you are building the docker image from your docker compose file itself.
 
 Hope this helps you out, if you still have any questions, reach out to us .
+
+## Related
+
+- [Sample Java Apps](/docs/quickstart/java-springboot-filter/) — browse more Java samples.
+- [Keploy with OpenHospital](/docs/quickstart/openhospital/) — another Spring Boot Postgres app.
+- [Sample Rest API with Spring-Boot and MongoDB](/docs/quickstart/java-spring-boot-mongo/) — Spring Boot with MongoDB.
+- [Sample REST API with Spring-Boot and XML](/docs/quickstart/java-spring-boot-xml/) — Spring Boot serving XML.

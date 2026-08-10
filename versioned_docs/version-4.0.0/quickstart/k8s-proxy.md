@@ -343,3 +343,9 @@ After test generation, you can view the total number of test suites categorized 
 In this quickstart, we demonstrated how to use the Keploy Proxy in Kubernetes to record live traffic and generate tests using AI—all without writing manual tests. This is only a quickstart; you can follow the same steps to record real, production-like traffic and generate tests using AI.
 
 Happy Testing with Keploy
+
+## Related
+
+- [Developer Workflow with Keploy Proxy](/docs/quickstart/k8s-proxy-developer-workflow/) — branch, replay, and gate PRs.
+- [Developer + LLM Workflow with Keploy Proxy](/docs/quickstart/k8s-proxy-llm-workflow/) — the same flow driven by an LLM.
+- [E-commerce Microservices](/docs/quickstart/samples-microservices/) — multi-service app to record.

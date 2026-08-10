@@ -134,3 +134,9 @@ sudo -E env PATH=$PATH keploy test -c 'cargo run'
 _Voila!! Our testcases has passed 🌟_
 
 Hope this helps you out, if you still have any questions, reach out to us .
+
+## Related
+
+- [GraphQL Application with MongoDB](/docs/quickstart/samples-rust/) — another Rust + MongoDB sample.
+- [CRUD REST API with MongoDB](/docs/quickstart/sample-rust-crud-mongo/) — Rust CRUD walkthrough.
+- [Sample Rust Apps](/docs/quickstart/rust-filter/) — browse all Rust quickstarts.

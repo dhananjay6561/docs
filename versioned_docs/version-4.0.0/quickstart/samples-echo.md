@@ -243,3 +243,9 @@ We will get output something like this:
 Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
 
 Hope this helps you out, if you still have any questions, reach out to us .
+
+## Related
+
+- [Sample Product Catalog App (Golang)](/docs/quickstart/samples-mux/) — another Go sample.
+- [Mux MySQL Sample Application](/docs/quickstart/samples-mysql/) — Go + MySQL sample.
+- [Sample Golang Apps](/docs/quickstart/golang-filter/) — browse all Go quickstarts.
