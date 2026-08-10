@@ -68,9 +68,14 @@ export function onRouteDidUpdate({location, previousLocation}) {
     if (typeof window.fbq === "function") {
       window.fbq("track", "PageView");
     } else {
-      // Pixel hasn't finished its idle bootstrap yet — schedule it (the stub
-      // will queue this navigation's PageView once fbevents.js loads).
-      scheduleBootstrap();
+      // Pixel hasn't finished its idle bootstrap yet. A real SPA navigation
+      // means the user is active, so deferral no longer buys anything — bootstrap
+      // synchronously now instead of re-scheduling into the (not-yet-fired) idle
+      // window. bootstrapPixel creates the fbq stub and fires init + this page's
+      // PageView immediately (the stub queues them until fbevents.js loads), so
+      // this navigation isn't dropped. Any already-scheduled idle callback then
+      // no-ops because window.fbq now exists.
+      bootstrapPixel();
     }
   }
 }
