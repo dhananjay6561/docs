@@ -254,6 +254,14 @@ With proper practices and tools, shipping **high-quality, reliable applications*
 
 Let's continue to pursue excellence in software quality!
 
+## Related Terms
+
+- [Software Testing Life Cycle](/docs/concepts/reference/glossary/software-testing-life-cycle/) — defect management spans the whole cycle.
+- [Regression Testing](/docs/concepts/reference/glossary/regression-testing/) — verifies fixed defects stay fixed.
+- [Error Guessing](/docs/concepts/reference/glossary/error-guessing/) — a technique for uncovering defects.
+- [Acceptance Testing](/docs/concepts/reference/glossary/acceptance-testing/) — catches defects before release.
+- [Browse all testing terms](/docs/concepts/reference/glossary/) — the full Keploy glossary.
+
 ## FAQs
 
 ### What is a defect in software testing?

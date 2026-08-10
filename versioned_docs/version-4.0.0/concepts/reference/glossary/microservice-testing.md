@@ -52,3 +52,10 @@ Keploy is an innovative testing tool designed to address many of the challenges 
 - **Performance Testing**: The recorded interactions can be used to simulate realistic load scenarios, aiding in performance testing of microservices.
 
 By leveraging Keploy's capabilities, development teams can overcome many of the traditional challenges associated with microservices testing, leading to more robust and reliable distributed systems.
+
+## Related Terms
+
+- [Integration Testing](/docs/concepts/reference/glossary/integration-testing/) — verify how services interact together.
+- [End-to-End Testing](/docs/concepts/reference/glossary/end-to-end-testing/) — validate complete flows across microservices.
+- [Mocks](/docs/concepts/reference/glossary/mocks/) — simulate service dependencies during isolated tests.
+- [Browse all testing terms](/docs/concepts/reference/glossary/) — the full Keploy glossary.

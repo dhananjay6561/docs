@@ -65,6 +65,14 @@ Since you don't require to setup any test environment, Keploy can be used in any
 
 End-to-end (E2E) testing is a important component of the software development process, as it ensures that applications function correctly and meet user expectations across all integrated components. While E2E testing presents challenges, such as time consumption and automation complexity, tools like Keploy offer powerful solutions to streamline the process. By capturing and replaying real-world API interactions, Keploy enhances the efficiency and effectiveness of end-to-end testing, contributing to the delivery of high-quality software.
 
+## Related Terms
+
+- [Integration Testing](/docs/concepts/reference/glossary/integration-testing/) — checks module interactions before E2E.
+- [Acceptance Testing](/docs/concepts/reference/glossary/acceptance-testing/) — validates the finished product for users.
+- [Mocks](/docs/concepts/reference/glossary/mocks/) — Keploy uses mocks to replay E2E dependencies.
+- [Regression Testing](/docs/concepts/reference/glossary/regression-testing/) — reruns E2E flows to catch regressions.
+- [Browse all testing terms](/docs/concepts/reference/glossary/) — the full Keploy glossary.
+
 ## FAQs
 
 ### What is End-to-End Testing?

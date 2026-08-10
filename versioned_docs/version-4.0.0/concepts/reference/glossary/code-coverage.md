@@ -90,3 +90,10 @@ Now when let's the test cases with Jest, you can see the code coverage report ge
 ```bash
 npm test
 ```
+
+## Related Terms
+
+- [Unit Testing](/docs/concepts/reference/glossary/unit-testing/) — the tests whose reach coverage measures.
+- [Unit Test Automation](/docs/concepts/reference/glossary/unit-test-automation/) — automating those tests to raise coverage.
+- [Test-Driven Development](/docs/concepts/reference/glossary/test-driven-development/) — writing tests first tends to lift coverage.
+- [Browse all testing terms](/docs/concepts/reference/glossary/) — the full Keploy glossary.

@@ -121,6 +121,14 @@ Furthermore, Keploy's native integration seamlessly integrates with development 
 
 In conclusion, Keploy empowers development teams to overcome the challenges of integration testing effectively, enabling them to deliver high-quality software with confidence and efficiency.
 
+## Related Terms
+
+- [Unit Testing](/docs/concepts/reference/glossary/unit-testing/) — precedes integration testing in the pyramid.
+- [End-to-End Testing](/docs/concepts/reference/glossary/end-to-end-testing/) — follows integration testing across the full system.
+- [Component Testing](/docs/concepts/reference/glossary/component-testing/) — tests parts before they are integrated.
+- [Stubs](/docs/concepts/reference/glossary/stubs/) — simulate not-yet-ready modules during integration.
+- [Browse all testing terms](/docs/concepts/reference/glossary/) — the full Keploy glossary.
+
 ### FAQs
 
 #### 1. What is the primary goal of integration testing?

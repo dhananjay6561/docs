@@ -97,3 +97,11 @@ Here are some tips for beta testing:
 ## Conclusion
 
 Beta testing is an important part of the software development process. By beta testing a product, developers can get valuable feedback from real users and improve the quality of the product before it is released to the general public.
+
+## Related Terms
+
+- [Acceptance Testing](/docs/concepts/reference/glossary/acceptance-testing/) — validates user needs just before release.
+- [End-to-End Testing](/docs/concepts/reference/glossary/end-to-end-testing/) — checks full flows ahead of beta.
+- [Manual Testing](/docs/concepts/reference/glossary/manual-testing/) — beta relies on real users testing manually.
+- [Software Testing Life Cycle](/docs/concepts/reference/glossary/software-testing-life-cycle/) — where beta testing fits before launch.
+- [Browse all testing terms](/docs/concepts/reference/glossary/) — the full Keploy glossary.

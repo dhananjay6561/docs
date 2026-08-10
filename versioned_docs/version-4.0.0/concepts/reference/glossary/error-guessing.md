@@ -38,3 +38,10 @@ Error guessing is an intuitive and experience-based software testing technique t
 ## Conclusion
 
 While error guessing is not systematic like other testing methods, it can be highly effective when combined with more structured approaches. It allows testers to explore edge cases and unusual scenarios that might be overlooked by conventional test cases. However, the success of error guessing largely depends on the tester's expertise and familiarity with the system. As such, it's often used as a complementary technique rather than a standalone method in comprehensive testing strategies.
+
+## Related Terms
+
+- [Negative Testing](/docs/concepts/reference/glossary/negative-testing/) — deliberately probing invalid inputs, a close cousin.
+- [Black-Box Testing](/docs/concepts/reference/glossary/black-box-testing/) — experience-based testing without seeing the code.
+- [Manual Testing](/docs/concepts/reference/glossary/manual-testing/) — where error guessing is most often applied.
+- [Browse all testing terms](/docs/concepts/reference/glossary/) — the full Keploy glossary.

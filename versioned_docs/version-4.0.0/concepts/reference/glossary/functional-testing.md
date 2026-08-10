@@ -211,6 +211,14 @@ Integrate functional tests into your Continuous Integration (CI) pipelines. This
 
 Despite the challenges, functional testing is an important part of the software testing process. By following good functional testing practices, you can help to ensure that the software system meets the specified requirements and meets the intended business needs.
 
+## Related Terms
+
+- [Black Box Testing](/docs/concepts/reference/glossary/black-box-testing/) — functional testing is largely black-box.
+- [Integration Testing](/docs/concepts/reference/glossary/integration-testing/) — a functional testing type for module interactions.
+- [Regression Testing](/docs/concepts/reference/glossary/regression-testing/) — re-verifies functionality after changes.
+- [Unit Testing](/docs/concepts/reference/glossary/unit-testing/) — the most granular functional test level.
+- [Browse all testing terms](/docs/concepts/reference/glossary/) — the full Keploy glossary.
+
 ## Frequently Asked Questions
 
 ### 1. What is Functional Testing?
