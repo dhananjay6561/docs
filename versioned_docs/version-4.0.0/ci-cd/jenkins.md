@@ -228,3 +228,9 @@ pipeline {
 Replace `<NAMESPACE>`, `<DEPLOYMENT>`, `<CLUSTER>`, and `<DELAY>` with your own values. Set `<DELAY>` to cover your application's startup time (in seconds).
 
 > `withCredentials` binds the Jenkins secret to `KEPLOY_API_KEY` only for the duration of that stage — the CLI picks it up automatically.
+
+## Related
+
+- [Integrating with GitHub CI](/docs/ci-cd/github/) — the GitHub equivalent.
+- [Integrating with GitLab CI](/docs/ci-cd/gitlab/) — the GitLab equivalent.
+- [API Test Setup for GitHub CI/CD](/docs/running-keploy/api-testing-cicd/) — API-suite CI setup.

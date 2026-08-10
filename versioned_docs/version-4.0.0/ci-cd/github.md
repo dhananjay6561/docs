@@ -274,3 +274,9 @@ Replace `<NAMESPACE>`, `<DEPLOYMENT>`, `<CLUSTER>`, and `<DELAY>` with your own 
 > `KEPLOY_API_KEY: ${{ secrets.KEPLOY_API_KEY }}` pulls the value from GitHub's secret store and makes it available as an environment variable in all subsequent steps.
 
 Hope this helps you out, if you still have any questions, reach out to us .
+
+## Related
+
+- [Integrating with GitLab CI](/docs/ci-cd/gitlab/) — the GitLab equivalent.
+- [Integrating with Jenkins](/docs/ci-cd/jenkins/) — the Jenkins equivalent.
+- [API Test Setup for GitHub CI/CD](/docs/running-keploy/api-testing-cicd/) — API-suite CI setup.

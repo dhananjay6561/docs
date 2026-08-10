@@ -191,3 +191,9 @@ keploy-cloud-replay:
 Replace `<NAMESPACE>`, `<DEPLOYMENT>`, `<CLUSTER>`, and `<DELAY>` with your own values. Set `<DELAY>` to cover your application's startup time (in seconds).
 
 > Because `KEPLOY_API_KEY` is defined as a masked variable in GitLab, it is already present in the job's environment — no `export` step is needed.
+
+## Related
+
+- [Integrating with GitHub CI](/docs/ci-cd/github/) — the GitHub equivalent.
+- [Integrating with Jenkins](/docs/ci-cd/jenkins/) — the Jenkins equivalent.
+- [API Test Setup for GitHub CI/CD](/docs/running-keploy/api-testing-cicd/) — API-suite CI setup.
