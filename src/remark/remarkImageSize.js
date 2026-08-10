@@ -158,6 +158,11 @@ function resolveStaticPath(src) {
 }
 
 // Full pipeline: src string -> {width, height} or null. Never throws.
+// Note: sizeCache is module-level, so it persists for the whole process. Under
+// `npm run build` that's a fresh process each time, so it's always accurate.
+// Under the dev server (`npm start`) the process is long-lived, so if an author
+// replaces an asset with one of different dimensions the stale entry sticks —
+// restart the dev server to pick up resized assets.
 const sizeCache = new Map();
 function measure(src) {
   const abs = resolveStaticPath(src);
