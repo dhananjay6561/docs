@@ -15,6 +15,22 @@ keywords:
   - installation
 ---
 
+import HowTo from '@site/src/components/HowTo';
+
+<HowTo
+name="Run Keploy natively on Windows via WSL"
+description="Set up WSL and install the Keploy binary inside a Linux distribution to run Keploy on Windows."
+totalTime="PT10M"
+tools={["Windows", "WSL", "Ubuntu", "Keploy CLI"]}
+steps={[
+{name: "Check prerequisites", text: "Ensure you are on Windows 10 version 2004+ (build 19041+) or Windows 11 with admin access."},
+{name: "Install WSL + Ubuntu", text: "Run wsl --install -d Ubuntu-22.04 from an elevated terminal and set up your Linux user."},
+{name: "Install the Keploy binary", text: "Inside the WSL shell download the Keploy release tarball and move the binary to /usr/local/bin."},
+{name: "Verify", text: "Run keploy in the WSL shell to confirm the CLI is installed."},
+]}
+visible={false}
+/>
+
 Keploy relies on the Linux kernel's eBPF subsystem to capture network traffic, so it does not run directly on the Windows kernel. On Windows you run Keploy inside **WSL (Windows Subsystem for Linux)**, which gives you a real Linux kernel while keeping your Windows development environment. This page covers the WSL prerequisites and installs the Keploy binary inside that Linux environment.
 
 ## Prerequisites
