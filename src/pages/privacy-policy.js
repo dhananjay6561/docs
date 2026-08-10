@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import {DOCS_URL, organizationRef, websiteRef} from "../schema/siteEntities";
 
 function PrivacyPolicy() {
   const context = useDocusaurusContext();
@@ -12,14 +13,10 @@ function PrivacyPolicy() {
     "@context": "https://schema.org",
     "@type": "DigitalDocument",
     name: "Keploy, Inc. Privacy Policy",
-    url: `${siteConfig.url}/docs/privacy-policy`,
+    url: `${DOCS_URL}privacy-policy/`,
     dateModified: "2024-04-28",
-    isPartOf: {"@type": "WebSite", url: siteConfig.url},
-    publisher: {
-      "@type": "Organization",
-      name: "Keploy",
-      url: "https://keploy.io",
-    },
+    isPartOf: websiteRef,
+    publisher: organizationRef,
   };
   return (
     <Layout

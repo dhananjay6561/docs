@@ -24,6 +24,12 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import {useDocsVersion} from "@docusaurus/plugin-content-docs/client";
 import {KeployCloud} from "@site/src/components/KeployCloud";
 import MarkdownPageActions from "@site/src/components/MarkdownPageActions";
+import {
+  organizationRef,
+  websiteRef,
+  TERMSET_ID,
+  withTrailingSlash,
+} from "@site/src/schema/siteEntities";
 
 export default function DocItem(props) {
   const {content: DocContent} = props;
@@ -107,7 +113,15 @@ export default function DocItem(props) {
       })
       .filter(Boolean);
   };
-  const pageUrl = toAbsoluteUrl(siteConfig?.url, metadata?.permalink);
+  // `metadata.permalink` omits the trailing slash even under
+  // `trailingSlash: true`, while the canonical tag and og:url both carry it.
+  // Every `@id` derived from pageUrl has to match the canonical URL exactly,
+  // otherwise the nodes keyed on it never merge with the ones the glossary hub
+  // and other pages emit, and the graph fragments again along a bare slash.
+  const canonicalPermalink = siteConfig?.trailingSlash
+    ? withTrailingSlash(metadata?.permalink)
+    : metadata?.permalink;
+  const pageUrl = toAbsoluteUrl(siteConfig?.url, canonicalPermalink);
   const modifiedTime = toIsoDate(
     metadata?.lastUpdatedAt || frontMatter?.lastUpdatedAt
   );
@@ -224,13 +238,7 @@ export default function DocItem(props) {
           // (E-E-A-T) instead of dropping the field entirely.
           ...(authorList.length
             ? {author: authorList}
-            : {
-                author: {
-                  "@type": "Organization",
-                  name: "Keploy",
-                  url: "https://keploy.io",
-                },
-              }),
+            : {author: organizationRef}),
           ...(combinedContributors.length
             ? {contributor: combinedContributors}
             : {}),
@@ -241,14 +249,30 @@ export default function DocItem(props) {
             "@type": "WebPage",
             "@id": pageUrl,
           },
-          publisher: {
-            "@type": "Organization",
-            name: "Keploy",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://keploy.io/docs/img/favicon.png",
-            },
-          },
+          isPartOf: websiteRef,
+          publisher: organizationRef,
+        }
+      : null;
+  // Glossary term pages also emit a DefinedTerm belonging to the glossary
+  // hub's DefinedTermSet, so AI engines can cite an individual definition
+  // rather than only the TechArticle wrapping it. Matches a term slug under
+  // /concepts/reference/glossary/ (the hub itself is a React page, so it
+  // never reaches DocItem). Restricted to the current version: 1.0.0 and
+  // 2.0.0 carry `noIndex: true`, and emitting their terms too would put
+  // three competing definitions of the same term in one term set.
+  const isGlossaryTerm =
+    isLatestVersion &&
+    /\/concepts\/reference\/glossary\/[^/]+\/?$/.test(permalink);
+  const definedTermSchema =
+    isGlossaryTerm && pageUrl && title
+      ? {
+          "@context": "https://schema.org",
+          "@type": "DefinedTerm",
+          "@id": `${pageUrl}#term`,
+          name: frontMatter?.sidebar_label || title,
+          description,
+          url: pageUrl,
+          inDefinedTermSet: TERMSET_ID,
         }
       : null;
   const MDXComponent = props.content;
@@ -287,6 +311,11 @@ export default function DocItem(props) {
         {articleSchema && (
           <script type="application/ld+json">
             {JSON.stringify(articleSchema)}
+          </script>
+        )}
+        {definedTermSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(definedTermSchema)}
           </script>
         )}
         {Array.isArray(frontMatter.head) &&

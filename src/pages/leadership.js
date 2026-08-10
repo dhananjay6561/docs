@@ -6,6 +6,7 @@ import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
+import {DOCS_URL, organizationRef, websiteRef} from "../schema/siteEntities";
 
 export default function Security() {
   const context = useDocusaurusContext();
@@ -28,8 +29,9 @@ export default function Security() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Keploy Leadership",
-    url: `${siteConfig.url}/docs/Leadership`,
-    isPartOf: {"@type": "WebSite", url: siteConfig.url},
+    url: `${DOCS_URL}Leadership/`,
+    isPartOf: websiteRef,
+    publisher: organizationRef,
     mainEntity: {
       "@type": "ItemList",
       itemListElement: team.map((person, i) => ({
@@ -39,7 +41,7 @@ export default function Security() {
           "@type": "Person",
           name: person.name,
           image: person.image,
-          worksFor: {"@type": "Organization", name: "Keploy"},
+          worksFor: organizationRef,
           sameAs: [person.sameAs],
         },
       })),
