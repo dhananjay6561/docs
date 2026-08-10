@@ -1,8 +1,8 @@
 ---
 id: api-testing-auth-setup
-title: Auth Setup
+title: Authentication Setup for API Testing
 sidebar_label: Auth Setup
-description: Auth setup for API Testing
+description: Configure authentication for Keploy API testing — set up bearer tokens, API keys, and custom auth headers so recorded suites replay against protected endpoints.
 tags:
   - API testing
   - webhooks
