@@ -653,3 +653,9 @@ curl -sk https://<YOUR_INGRESS_HOST>:30080/healthz
 ```
 
 ✅ Open the Keploy UI → **Clusters** → your cluster should show as **Connected**. You can now record and replay traffic on any deployment.
+
+## Related
+
+- [Kubernetes Local Setup (Kind)](/docs/keploy-cloud/kubernetes-local-setup/) — spin up a local Kind cluster.
+- [Keploy Enterprise Installation](/docs/keploy-cloud/cloud-installation/) — install the Enterprise agent.
+- [Deploy Keploy with ArgoCD](/docs/keploy-cloud/gitops-argocd/) — GitOps deployment on the cluster.

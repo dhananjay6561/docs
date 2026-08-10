@@ -237,3 +237,10 @@ kube-system          coredns-7d764666f9-r82lr                          1/1     R
 ✅ Once deployments are visible, you can start **recording on any Pod** and later **replay**.
 
 ![Keploy Kubernetes Interface](/img/k8s-local-cluster-ui.png)
+
+## Related
+
+- [Kubernetes Setup](/docs/keploy-cloud/kubernetes/) — full cluster setup including ingress and GitOps.
+- [Deploy Keploy with ArgoCD](/docs/keploy-cloud/gitops-argocd/) — deploy the k8s-proxy declaratively with ArgoCD.
+- [Deploy Keploy with Flux CD](/docs/keploy-cloud/gitops-flux/) — deploy the k8s-proxy declaratively with Flux.
+- [Keploy Enterprise Installation](/docs/keploy-cloud/cloud-installation/) — install the Enterprise agent.

@@ -142,3 +142,9 @@ keploy test -c "<appCmd>" --freeze-time
 ```
 
 Voila! Your tests will now run with time freezing enabled.
+
+## Related
+
+- [Dynamic Deduplication](/docs/keploy-cloud/deduplication/) — related test-stability feature.
+- [Static Deduplication](/docs/keploy-cloud/static-deduplication/) — dedupe recorded tests.
+- [Mock Registry](/docs/keploy-cloud/mock-registry/) — manage the mocks time-freezing relies on.
