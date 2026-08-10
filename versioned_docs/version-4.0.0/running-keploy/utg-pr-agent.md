@@ -89,3 +89,9 @@ Ready to transform your pull request workflow from a potential quality bottlenec
 3. **Experience the difference** in your next code review cycle
 
 _Elevate your development workflow. Make every pull request a quality checkpoint._
+
+## Related
+
+- [Keploy Unit Test Generator](/docs/running-keploy/unit-test-generator/) — the engine behind the PR agent.
+- [Keploy's VS Code Extension](/docs/running-keploy/utg-vscode-extension/) — the same generator in your IDE.
+- [Unit Test Architecture](/docs/running-keploy/unit-test-architecture/) — how generated unit tests are built.

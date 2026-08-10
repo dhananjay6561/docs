@@ -94,3 +94,10 @@ Records repaired: 15
 | ------------------------------------------------------------ | -------------------------------------------- | ------------------------------------------------------------------ |
 | `Captured calls` increments, but `Complete req/resp` stays 0 | Responses blocked by CORS or Service Worker. | Click **Debug**, or whitelist the domain in extension permissions. |
 | “Network error” when pressing **Generate Tests**             | Auth token expired.                          | Log out, log back in.                                              |
+
+## Related
+
+- [Using Keploy Local Agent](/docs/running-keploy/api-testing-local-agent/) — alternative for local endpoints.
+- [Adding New Test Suites](/docs/running-keploy/api-testing-add-suite/) — create suites from captured calls.
+- [API Test Generator](/docs/running-keploy/api-test-generator/) — generate tests from traffic.
+- [Authentication Setup for API Testing](/docs/running-keploy/api-testing-auth-setup/) — handle authenticated replay.

@@ -44,3 +44,10 @@ Global variables serve as the centralized source of truth for your testing envir
 <img src="/docs/img/global-vars.png?raw=true" alt="Configuring global variables in Keploy API testing"/>
 
 **Example Context:** The **Global Variables** dashboard allows you to manage workspace-wide data. This includes static entries like the **base URL** and dynamic **Global Custom Functions**. For instance, `generateCompanyId()` is a function that returns a unique string starting with `COMP_` followed by a timestamp, ensuring unique identifiers for every test run.
+
+## Related
+
+- [Functions & Schema Assertions](/docs/running-keploy/api-testing-functions/) — pair variables with custom functions.
+- [Custom Assertions](/docs/running-keploy/api-testing-custom-assertions/) — assert against captured variable values.
+- [Editing Test Suites and Custom Assertions](/docs/running-keploy/api-testing-edit-assertions/) — where variables are configured.
+- [Authentication Setup for API Testing](/docs/running-keploy/api-testing-auth-setup/) — inject tokens as global variables.

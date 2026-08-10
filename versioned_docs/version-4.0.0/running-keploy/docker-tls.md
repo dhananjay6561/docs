@@ -65,3 +65,10 @@ keploy test -c "Docker_CMD_to_run_user_container --network <network_name>" --con
 Voilà! 🧑🏻‍💻 We have the tests with data mocks running! 🐰🎉
 
 You'll be able to see the test cases that ran with the results report on the console as well as locally in the `testReport` directory.
+
+## Related
+
+- [Keploy CLI Commands](/docs/running-keploy/cli-commands/) — full record and test flag reference.
+- [Configuration File](/docs/running-keploy/configuration-file/) — set container and network names in `keploy.yaml`.
+- [Keploy Passthrough](/docs/running-keploy/keploy-passthrough/) — pass through ports for containerized dependencies.
+- [Adding a custom Mock to the Keploy Mock File](/docs/running-keploy/custom-mocks/) — mock services you cannot containerize.

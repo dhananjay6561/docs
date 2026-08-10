@@ -30,3 +30,9 @@ Click **Share**. Keploy sends:
   with a direct link to the suite.
 
 New users must **accept the invite** to gain access.
+
+## Related
+
+- [Sharing Reports](/docs/running-keploy/api-testing-sharing-reports/) — share run results, not just suites.
+- [Test Run Reports](/docs/running-keploy/api-testing-run-report/) — read the reports you share.
+- [Keploy Test Run Reports](/docs/running-keploy/test-run-reports/) — report internals and history.

@@ -78,3 +78,10 @@ Every test generated will include:
 [//]: # "- 🧹 [Review, clean, and improve test flows](/docs/running-keploy/review-and-improve-ai-generated-tests)"
 [//]: # "- 🤝 [Share tests and test-reports with your team](/docs/running-keploy/share-tests)"
 [//]: # "- 🚀 [Integrate tests in your CI/CD pipeline](/docs/running-keploy/ci-cd-ai-gen-api-tests)"
+
+## Related
+
+- [API Test Recorder (Chrome Extension)](/docs/running-keploy/api-testing-chrome-extension/) — capture flows via the browser instead.
+- [Run AI-Generated API Tests](/docs/running-keploy/run-ai-generated-api-tests/) — execute the tests you just generated.
+- [Review & Improve AI-Generated API Tests](/docs/running-keploy/review-and-improve-ai-generated-tests/) — refine and harden generated suites.
+- [Using Keploy Local Agent](/docs/running-keploy/api-testing-local-agent/) — proxy private endpoints for generation.

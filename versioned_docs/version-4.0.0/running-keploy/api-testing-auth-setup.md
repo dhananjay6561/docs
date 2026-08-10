@@ -41,3 +41,10 @@ Cookie - Keploy will execute this API and take the cookie from response headers 
 ![Keploy](../../../static/img/jwt.png)
 
 This Auth option is for the application which can be authenticated using jwt token. This token is used in all the API calls that are done by Keploy to the application.
+
+## Related
+
+- [Adding New Test Suites](/docs/running-keploy/api-testing-add-suite/) — add suites for protected endpoints.
+- [Using Keploy Local Agent](/docs/running-keploy/api-testing-local-agent/) — test private endpoints locally.
+- [API Test Generator](/docs/running-keploy/api-test-generator/) — generate tests after auth setup.
+- [API Test Recorder (Chrome Extension)](/docs/running-keploy/api-testing-chrome-extension/) — capture authenticated traffic.

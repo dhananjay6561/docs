@@ -10,11 +10,12 @@ tags:
   - job-tracking
   - test-management
 ---
+
 import ProductTier from '@site/src/components/ProductTier';
 
 <ProductTier tiers="Free, Teams, Scale, Enterprise" offerings="Self-Hosted, Dedicated" />
 
-This guide explains how to use the generation history to track and manage your test generation jobs. 
+This guide explains how to use the generation history to track and manage your test generation jobs.
 
 ## Generation History Features
 
@@ -65,17 +66,20 @@ If you find rejected test suites that you want to include:
 ## Understanding Test Statuses
 
 ### Accepted Tests ✅
+
 - Tests that passed all validation checks
 - Successfully generated and ready to use
 - No issues detected in the test suite
 
 ### Rejected Tests ❌
+
 - Tests that failed validation checks
 - May have incorrect assertions or invalid configurations
 - Require manual review and fixes
 - Can be added back to the test suite list for modification
 
 ### Buggy Tests 🐛
+
 - Tests with identified bugs or issues
 - May have inconsistent behavior or errors
 - Need investigation and debugging
@@ -130,16 +134,19 @@ If you find rejected test suites that you want to include:
 ## Analyzing Generation Trends
 
 ### Success Rate Analysis
+
 - Track the percentage of accepted vs rejected tests over time
 - Identify patterns in test generation quality
 - Optimize inputs based on historical data
 
 ### Input Optimization
+
 - Review which inputs led to higher acceptance rates
 - Compare different configurations and their outcomes
 - Refine your test generation strategy
 
 ### Error Patterns
+
 - Identify common reasons for test rejection
 - Address recurring bugs or issues
 - Improve test generation quality
@@ -170,3 +177,10 @@ If you find rejected test suites that you want to include:
    - Archive old generation jobs periodically
    - Focus on recent and relevant generations
    - Keep track of successful generation patterns
+
+## Related
+
+- [Schema Coverage and Generation](/docs/running-keploy/api-testing-schema-coverage/) — generate tests for coverage gaps.
+- [API Test Generator](/docs/running-keploy/api-test-generator/) — how test generation works.
+- [Test Run Reports](/docs/running-keploy/api-testing-run-report/) — review resulting run reports.
+- [Adding New Test Suites](/docs/running-keploy/api-testing-add-suite/) — add suites manually.

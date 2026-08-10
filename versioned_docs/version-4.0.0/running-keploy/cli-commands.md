@@ -463,3 +463,10 @@ keploy example [flags]
 <b> Available Flags: </b>
 
 - `--customSetup` - Displays commands tailored for custom user-defined setups.
+
+## Related
+
+- [Configuration File](/docs/running-keploy/configuration-file/) — set these flags once in `keploy.yaml`.
+- [Recording Filters](/docs/running-keploy/recording-filters/) — control which requests get recorded.
+- [Keploy Templatize](/docs/running-keploy/keploy-templatize/) — details on the `templatize` command.
+- [Keploy Passthrough](/docs/running-keploy/keploy-passthrough/) — using the `--passThroughPorts` flag.

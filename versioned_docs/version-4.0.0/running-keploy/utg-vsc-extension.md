@@ -125,3 +125,9 @@ Don't let testing slow down your development velocity. With Keploy's AI-powered 
 4. **Watch your test coverage soar** while maintaining development speed
 
 \_Transform your IDE. Elevate your code quality. Join 500k+ developers building better software with Keploy.
+
+## Related
+
+- [Keploy's PR Agent](/docs/running-keploy/utg-pr-agent/) — the same generator on pull requests.
+- [Keploy Unit Test Generator](/docs/running-keploy/unit-test-generator/) — the generator internals.
+- [Unit Test Architecture](/docs/running-keploy/unit-test-architecture/) — how generated unit tests are built.

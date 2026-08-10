@@ -115,3 +115,10 @@ Replace the placeholder values with actual paths and keys as needed.
 This assumes your Karaf application is running locally on port 8181.
 
 After running the tests, a `coverage.xml` file will be generated in the root directory of your project. This file contains the test coverage report, which can be used for further analysis or integrated with CI/CD pipelines.
+
+## Related
+
+- [Keploy CLI Commands](/docs/running-keploy/cli-commands/) — record and test command reference.
+- [Configuration File](/docs/running-keploy/configuration-file/) — persist settings in `keploy.yaml`.
+- [TLS Docker Support](/docs/running-keploy/docker-tls/) — run Keploy against containerized apps.
+- [Keploy Passthrough](/docs/running-keploy/keploy-passthrough/) — pass through dependency ports.

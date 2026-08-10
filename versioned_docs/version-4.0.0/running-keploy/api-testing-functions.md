@@ -51,3 +51,10 @@ Save repeatable validation rules to the Global Custom Functions library so they 
 <img src="/docs/img/global-functions.png?raw=true" alt="Global Functions"/>
 
 **Example Context:** The library shows reusable logic stored globally. For example, the `customFunction` at the bottom demonstrates an `assert.greater(response.status, 399)` utility, creating a standardized rule to verify error-level status codes across multiple suites.
+
+## Related
+
+- [Custom Assertions](/docs/running-keploy/api-testing-custom-assertions/) — define validation rules.
+- [Bulk Assertions and Schema Validation](/docs/running-keploy/api-testing-bulk-assertions/) — apply assertions in bulk.
+- [Assertion Tree](/docs/running-keploy/api-testing-assertion-tree/) — visualize assertion flow.
+- [Editing Test Suites and Custom Assertions](/docs/running-keploy/api-testing-edit-assertions/) — edit assertions in a suite.

@@ -90,3 +90,9 @@ In the Test Suites list, hover over any row to reveal the ︙ (more-options) men
 
 All changes are saved instantly and logged.
 ⚠️ Deletion is irreversible. Use Git history or backups to restore.
+
+## Related
+
+- [Run AI-Generated API Tests](/docs/running-keploy/run-ai-generated-api-tests/) — execute the generated suites.
+- [Self-Healing API Tests](/docs/running-keploy/self-healing-ai-api-tests/) — auto-repair tests as APIs change.
+- [Generate API Tests using AI](/docs/running-keploy/generate-api-tests-using-ai/) — how the tests are produced.

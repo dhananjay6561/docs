@@ -35,6 +35,7 @@ The schema coverage page provides a comprehensive view of how well your test sui
 ### 1. Original Schema View
 
 The original schema section displays:
+
 - **Your API Schema**: The original OpenAPI/Swagger schema or manually defined schema
 - **Schema Structure**: Complete API specification including:
   - Endpoints and paths
@@ -46,6 +47,7 @@ The original schema section displays:
 ### 2. Total Coverage Metrics
 
 View comprehensive coverage statistics:
+
 - **Overall Coverage Percentage**: Total schema coverage across all endpoints
 - **Endpoint Coverage**: Coverage breakdown by API endpoint
 - **Covered Lines**: Number of schema lines with test coverage
@@ -54,6 +56,7 @@ View comprehensive coverage statistics:
 ### 3. Keploy Generated Schema
 
 The generated schema section shows:
+
 - **Auto-Generated Schema**: Schema derived from recorded API calls
 - **Coverage Highlights**: Visual indication of covered vs uncovered parts
 - **Field-Level Coverage**: Which fields have been tested
@@ -62,6 +65,7 @@ The generated schema section shows:
 ### Side-by-Side Comparison
 
 View original and generated schemas side by side:
+
 ```
 ┌──────────────────────────────────────────────────────────────────┐
 │ Schema Coverage Analysis                                         │
@@ -87,7 +91,7 @@ View original and generated schemas side by side:
 │ │   address: ❌ Not Covered   │   address: ❌ Missing        │  │
 │ │   role: ⚠️  Partial         │   role: ⚠️  Limited values   │  │
 │ │                             │                              │  │
-│ └─────────────────────────────┴──────────────────────────────┘  │ 
+│ └─────────────────────────────┴──────────────────────────────┘  │
 │                                                                 │
 │ [Cover Missing Lines]                                           │
 │                                                                 │
@@ -108,7 +112,6 @@ View original and generated schemas side by side:
      - **Status Codes**: Target specific response codes to test
      - **Data Variations**: Specify value ranges or combinations
 
-
 ## Coverage Visualization
 
 - **Heat Map View**: Visual representation of coverage density
@@ -121,6 +124,7 @@ View original and generated schemas side by side:
 ### Detailed Coverage Metrics
 
 #### Endpoint-Level Coverage
+
 ```
 /api/v1/users
 ├─ GET    ✅ 100% (All fields covered)
@@ -138,9 +142,17 @@ View original and generated schemas side by side:
 ### Coverage Gaps Identification
 
 Keploy automatically identifies:
+
 1. **Untested Endpoints**: API paths with no test coverage
 2. **Missing HTTP Methods**: CRUD operations not tested
 3. **Uncovered Fields**: Schema fields never validated
 4. **Missing Edge Cases**: Boundary conditions not tested
 
 By leveraging schema coverage analysis and automated test generation, you can ensure comprehensive API testing, maintain high code quality.
+
+## Related
+
+- [Test Generation History](/docs/running-keploy/api-testing-generation-history/) — track generation jobs.
+- [API Test Generator](/docs/running-keploy/api-test-generator/) — how test generation works.
+- [Bulk Assertions and Schema Validation](/docs/running-keploy/api-testing-bulk-assertions/) — validate schema in bulk.
+- [Functions & Schema Assertions](/docs/running-keploy/api-testing-functions/) — schema and function assertions.

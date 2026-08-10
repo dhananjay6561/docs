@@ -46,6 +46,7 @@ The labeling system includes:
 When you open the label assignment dialog, you'll see:
 
 ### Existing Labels Section
+
 ```
 🏷️ Available Labels
 ├── 📊 Priority
@@ -77,11 +78,11 @@ When you open the label assignment dialog, you'll see:
    - Follow the steps above to open the label assignment interface
 
 2. **Create New Label**
-   - Click **"Create Custom Label"** 
+   - Click **"Create Custom Label"**
    - Enter label details in the creation form
 
 3. **Label Creation Form**
-    - For Example:
+   - For Example:
    ```
    Label Name: [smoke-critical]
    Color: [🔴] (color picker)
@@ -101,13 +102,14 @@ When you open the label assignment dialog, you'll see:
 ### Naming Conventions
 
 1. **Use Consistent Formatting**
+
    ```
    ✅ Good Examples:
    - team-frontend
    - priority-high
    - env-production
    - type-smoke-test
-   
+
    ❌ Avoid:
    - TeamFrontend
    - HIGH_PRIORITY

@@ -52,3 +52,9 @@ Iterate quickly:
 3. Compare the new report with the previous one right in the dashboard to verify the fix.
 
 You now have a pipeline—from triggering the run to an all-green build—that safeguards your API contract in every environment.
+
+## Related
+
+- [Generate API Tests using AI](/docs/running-keploy/generate-api-tests-using-ai/) — create the tests first.
+- [Review & Improve AI-Generated API Tests](/docs/running-keploy/review-and-improve-ai-generated-tests/) — refine the results.
+- [Self-Healing API Tests](/docs/running-keploy/self-healing-ai-api-tests/) — keep tests passing as APIs evolve.
