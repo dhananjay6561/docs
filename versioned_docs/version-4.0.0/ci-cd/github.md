@@ -14,6 +14,22 @@ tags:
   - plugin
 ---
 
+import HowTo from '@site/src/components/HowTo';
+
+<HowTo
+name="Set up Keploy API testing in GitHub Actions"
+description="Install Keploy in a GitHub Actions workflow and replay recorded API test suites on every push or pull request."
+totalTime="PT10M"
+tools={["GitHub Actions", "Keploy CLI"]}
+steps={[
+{name: "Check out the commit", text: "Add actions/checkout to your workflow so the job runs against the code under test."},
+{name: "Install Keploy", text: "Download the Keploy binary from the latest GitHub release and move it to /usr/local/bin on the runner."},
+{name: "Run the tests", text: "Add a step that runs keploy test -c \"<command to run your app>\" to replay the recorded suites."},
+{name: "Run cloud replay (optional)", text: "Authenticate with a Keploy API token and trigger cloud replay from the pipeline for hosted test sets."},
+]}
+visible={false}
+/>
+
 import ProductTier from '@site/src/components/ProductTier';
 
 <ProductTier tiers="Open Source, Enterprise" offerings="Self-Hosted, Dedicated" />

@@ -14,6 +14,21 @@ tags:
   - plugin
 ---
 
+import HowTo from '@site/src/components/HowTo';
+
+<HowTo
+name="Run Keploy API tests in a Jenkins pipeline"
+description="Configure a Jenkins pipeline to install Keploy and replay recorded API test suites on the agent."
+totalTime="PT10M"
+tools={["Jenkins", "Keploy CLI"]}
+steps={[
+{name: "Grant passwordless sudo", text: "Give the jenkins user NOPASSWD sudo so Keploy can attach its eBPF probes."},
+{name: "Install Keploy", text: "Add an Install Keploy stage that downloads the binary onto the Jenkins agent."},
+{name: "Run the tests", text: "Add a stage that runs keploy test -c \"<command to run your app>\" to replay the recorded suites."},
+]}
+visible={false}
+/>
+
 import ProductTier from '@site/src/components/ProductTier';
 
 <ProductTier tiers="Open Source, Enterprise" offerings="Self-Hosted, Dedicated" />
