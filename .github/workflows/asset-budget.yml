@@ -24,8 +24,9 @@ jobs:
 
       - name: New/changed images must be under 500 KB (X1)
         run: |
+          # checkout ran with fetch-depth: 0, so origin/<base> is already present
+          # with full ancestry for the three-dot merge-base below.
           base="origin/${{ github.base_ref }}"
-          git fetch origin "${{ github.base_ref }}" --depth=1 || true
           max=512000 # 500 KiB
           fail=0
           while IFS= read -r f; do
@@ -36,7 +37,7 @@ jobs:
               echo "::error file=$f::$f is $((size / 1024)) KB (> 500 KB). Optimize (WebP/AVIF) or convert to video before committing."
               fail=1
             fi
-          done < <(git diff --name-only --diff-filter=AM "$base"...HEAD | grep -iE '\.(png|jpe?g|gif|webp|svg)$' || true)
+          done < <(git diff --name-only --diff-filter=AM "$base"...HEAD | grep -iE '\.(png|jpe?g|gif|webp|avif|svg)$' || true)
           if [ "$fail" -eq 0 ]; then echo "All new/changed images are within the 500 KB budget."; fi
           exit "$fail"
 
