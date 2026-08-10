@@ -227,3 +227,14 @@ cbshim
 stdin
 sudo
 [Rr]eplayable
+[Aa]sync
+[Bb]oolean
+[Dd]atastore
+[Gg]zip
+[Jj][Ww][Tt]
+[Mm]ux
+[Pp]risma
+[Qq]uickstarts?
+[Uu]nbuggy
+[Ww]ebhook('?s)?
+_Transform
