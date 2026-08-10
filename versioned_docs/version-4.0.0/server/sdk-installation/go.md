@@ -109,3 +109,9 @@ To get the coverage related information for merged coverage data :
 ```go
 go tool cover -func combined-coverage.txt
 ```
+
+## Related
+
+- [Java Agent for Dynamic Deduplication](/docs/server/sdk-installation/java/) — the Java SDK.
+- [Keploy JavaScript SDK — Install & Merge Test Coverage](/docs/server/sdk-installation/javascript/) — the JS SDK.
+- [Keploy Python SDK — Install & Merge Test Coverage](/docs/server/sdk-installation/python/) — the Python SDK.

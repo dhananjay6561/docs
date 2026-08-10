@@ -89,3 +89,9 @@ and if you want the coverage in an html file, you can run:
 ```bash
 coverage html
 ```
+
+## Related
+
+- [Keploy Go SDK — Install & Merge Test Coverage](/docs/server/sdk-installation/go/) — the Go SDK.
+- [Java Agent for Dynamic Deduplication](/docs/server/sdk-installation/java/) — the Java SDK.
+- [Keploy JavaScript SDK — Install & Merge Test Coverage](/docs/server/sdk-installation/javascript/) — the JS SDK.
