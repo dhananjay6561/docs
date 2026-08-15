@@ -218,11 +218,21 @@ export default function DocItem(props) {
       : `${trimmedPermalink}.md`
     : null;
 
+  // A section's index.md (e.g. /docs/concepts/) is an index of child docs, not
+  // a single authored article, so it emits a CollectionPage instead of
+  // TechArticle. isIndexSource is true only when the source file is
+  // index.md/README.md; the /docs/ root and versioned roots are React/handled
+  // separately (isDocsRoot).
+  const isCategoryHub = isIndexSource && !isDocsRoot;
+  // Quickstart docs are step-by-step tutorials, so their Article node is also
+  // typed as a LearningResource for education-oriented consumers and AI.
+  const isQuickstart = /\/quickstart\/[^/]+\/?$/.test(permalink);
   const articleSchema =
-    pageUrl && title && !suppressArticleSchema
+    pageUrl && title && !suppressArticleSchema && !isCategoryHub
       ? {
           "@context": "https://schema.org",
-          "@type": schemaType,
+          "@type": isQuickstart ? [schemaType, "LearningResource"] : schemaType,
+          ...(isQuickstart ? {learningResourceType: "Tutorial"} : {}),
           headline: title,
           description,
           image: [articleImage],
@@ -275,6 +285,22 @@ export default function DocItem(props) {
           inDefinedTermSet: TERMSET_ID,
         }
       : null;
+  // Category hub pages emit a CollectionPage (see isCategoryHub above): a
+  // machine-readable "this page indexes a section" signal in place of the
+  // Article a hub does not qualify for.
+  const collectionPageSchema =
+    isCategoryHub && pageUrl && title
+      ? {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "@id": pageUrl,
+          name: title,
+          ...(description ? {description} : {}),
+          url: pageUrl,
+          isPartOf: websiteRef,
+          publisher: organizationRef,
+        }
+      : null;
   const MDXComponent = props.content;
   return (
     <>
@@ -316,6 +342,11 @@ export default function DocItem(props) {
         {definedTermSchema && (
           <script type="application/ld+json">
             {JSON.stringify(definedTermSchema)}
+          </script>
+        )}
+        {collectionPageSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(collectionPageSchema)}
           </script>
         )}
         {Array.isArray(frontMatter.head) &&
