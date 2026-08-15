@@ -31,7 +31,7 @@ Keploy has [native integrations](/concepts/general-glossary.md#4-interoperabilit
 like `go-test`, `jUnit`, `jest`, `pyTest`. Keploy gives combined test-coverage and can also be integrated in existing CI
 pipelines easily within `go-test`, `jUnit`, `jest`, `pyTest` workflows.
 
-<video autoPlay loop muted playsInline width="800" height="450" style={{width:'80%',height:'auto'}} aria-label="Keploy Integration with Testing Libraries"><source src="/docs/gif/replay-tc.mp4" type="video/mp4" /></video>
+<video autoPlay loop muted playsInline width="800" height="450" style={{width:'80%',height:'auto'}} aria-label="Keploy Integration with Testing Libraries" poster="/docs/gif/replay-tc-poster.jpg"><source src="/docs/gif/replay-tc.mp4" type="video/mp4" /></video>
 
 Run tests with mocks anywhere you like—**locally on the CLI**, in your **CI pipeline**, or even across a **Kubernetes
 cluster**. It's testing wherever you want it! 🌍
@@ -49,7 +49,7 @@ favorite API management tools like Postman or even Curl to generate test cases.
 Keploy automatically [mocks](/concepts/general-glossary.md#1-api-data-mocking) network/external dependencies for **all
 CRUD operations** with correct responses.
 
-<video autoPlay loop muted playsInline width="800" height="348" style={{width:'80%',height:'auto'}} aria-label="API Tools"><source src="/docs/gif/record-replay.mp4" type="video/mp4" /></video>
+<video autoPlay loop muted playsInline width="800" height="348" style={{width:'80%',height:'auto'}} aria-label="API Tools" poster="/docs/gif/record-replay-poster.jpg"><source src="/docs/gif/record-replay.mp4" type="video/mp4" /></video>
 
 Once recorded, you have the flexibility to replay and simulate the same flow with mutations/write calls locally or
 within your CI environment without needing to connect to external services/dependencies.

@@ -14,7 +14,7 @@ keywords:
 
 Keploy captures all the API calls and subsequent network traffic served by the application. You can use any existing API management tools like Postman, curl to generate test-case.
 
-<video autoPlay loop muted playsInline width="1074" height="782" style={{width:'80%',height:'auto'}} aria-label="API Tools"><source src="/docs/img/record-api.mp4" type="video/mp4" /></video>
+<video autoPlay loop muted playsInline width="1074" height="782" style={{width:'80%',height:'auto'}} aria-label="API Tools" poster="/docs/img/record-api-poster.jpg"><source src="/docs/img/record-api.mp4" type="video/mp4" /></video>
 
 ### 2. Automatically mock Mutations
 
@@ -28,7 +28,7 @@ Please check list of currently supported dependencies in [Go, Java and Node](htt
 
 Keploy can safely replay writes or mutations by capturing from local or other environments and replaying without API chaining.
 
-<video autoPlay loop muted playsInline width="800" height="348" style={{width:'80%',height:'auto'}} aria-label="API Tools"><source src="/docs/gif/record-replay.mp4" type="video/mp4" /></video>
+<video autoPlay loop muted playsInline width="800" height="348" style={{width:'80%',height:'auto'}} aria-label="API Tools" poster="/docs/gif/record-replay-poster.jpg"><source src="/docs/gif/record-replay.mp4" type="video/mp4" /></video>
 
 [Idempotency](/concepts/general-glossary.md#2-idempotency) guarantees are also **not required** in the application. Multiple Reads after write operations can be replicated automatically too.
 
@@ -49,7 +49,7 @@ Keploy has [native integrations](/concepts/general-glossary.md#4-interoperabilit
 Code coverage will be reported with existing and Keploy recorded test cases and can also be integrated in
 existing CI pipelines easily.
 
-<video autoPlay loop muted playsInline width="800" height="450" style={{maxWidth:'100%',height:'auto'}} aria-label="Keploy Integration with Testing Libraries"><source src="/docs/gif/replay-tc.mp4" type="video/mp4" /></video>
+<video autoPlay loop muted playsInline width="800" height="450" style={{maxWidth:'100%',height:'auto'}} aria-label="Keploy Integration with Testing Libraries" poster="/docs/gif/replay-tc-poster.jpg"><source src="/docs/gif/replay-tc.mp4" type="video/mp4" /></video>
 
 ### 5. Easy Integration Framework for new Libraries
 
