@@ -13,6 +13,7 @@ import {
   organizationRef,
   websiteRef,
   withTrailingSlash,
+  breadcrumbList,
 } from "../../../schema/siteEntities";
 
 // SEO/GEO: turn each glossary entry into a DefinedTerm inside a single
@@ -58,21 +59,10 @@ const glossaryStructuredData = [
         };
       }),
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {"@type": "ListItem", position: 1, name: "Home", item: `${SITE}/`},
-      {"@type": "ListItem", position: 2, name: "Docs", item: DOCS_URL},
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Concepts",
-        item: `${DOCS_URL}concepts/`,
-      },
-      {"@type": "ListItem", position: 4, name: "Glossary", item: GLOSSARY_URL},
-    ],
-  },
+  breadcrumbList([
+    {name: "Concepts", item: `${DOCS_URL}concepts/`},
+    {name: "Glossary", item: GLOSSARY_URL},
+  ]),
 ];
 
 function Glossary() {

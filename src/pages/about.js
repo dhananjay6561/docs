@@ -2,10 +2,10 @@ import React from "react";
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
 import {
-  SITE_URL as SITE,
   DOCS_URL,
   organizationRef,
   websiteRef,
+  breadcrumbList,
 } from "../schema/siteEntities";
 
 // Custom React pages under src/pages/ are not covered by the docs schema
@@ -31,7 +31,6 @@ const ABOUT_DESCRIPTION =
 // docs baseUrl live in one place. Site config sets `trailingSlash: true`, so
 // paths that map to a page carry a trailing slash to match the canonical href
 // and avoid duplicate-URL variants in structured data.
-const HOME_URL = `${SITE}/`;
 const ABOUT_URL = `${DOCS_URL}about/`;
 
 const aboutStructuredData = [
@@ -48,30 +47,7 @@ const aboutStructuredData = [
     isPartOf: websiteRef,
     publisher: organizationRef,
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: HOME_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Docs",
-        item: DOCS_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "About",
-        item: ABOUT_URL,
-      },
-    ],
-  },
+  breadcrumbList([{name: "About", item: ABOUT_URL}]),
 ];
 
 function About() {

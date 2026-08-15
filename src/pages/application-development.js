@@ -4,10 +4,10 @@ import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import {SDKs} from "../components/SDKs";
 import {
-  SITE_URL as SITE,
   DOCS_URL,
   organizationRef,
   websiteRef,
+  breadcrumbList,
 } from "../schema/siteEntities";
 
 // Custom React page — not covered by the docs schema plugin — so add JSON-LD
@@ -33,20 +33,7 @@ const structuredData = [
     isPartOf: websiteRef,
     publisher: organizationRef,
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {"@type": "ListItem", position: 1, name: "Home", item: `${SITE}/`},
-      {"@type": "ListItem", position: 2, name: "Docs", item: DOCS_URL},
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Application Development",
-        item: PAGE_URL,
-      },
-    ],
-  },
+  breadcrumbList([{name: "Application Development", item: PAGE_URL}]),
   {
     "@context": "https://schema.org",
     "@type": "ItemList",

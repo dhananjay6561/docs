@@ -11,7 +11,11 @@ import {
   EcosystemSupport,
 } from "../components";
 import {GET_STARTED_PATHS} from "../components/GetStartedPaths";
-import {organizationRef, websiteRef} from "../schema/siteEntities";
+import {
+  organizationRef,
+  websiteRef,
+  breadcrumbList,
+} from "../schema/siteEntities";
 //import {Intro} from "../components";
 export default function Home() {
   const context = useDocusaurusContext();
@@ -28,27 +32,8 @@ export default function Home() {
     return `${trimmedBase}${normalizedPath}`;
   };
   const docsUrl = toAbsoluteUrl(siteConfig.url, siteConfig.baseUrl);
-  const breadcrumbSchema =
-    docsUrl && siteConfig.url
-      ? {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            {
-              "@type": "ListItem",
-              position: 1,
-              name: "Home",
-              item: siteConfig.url,
-            },
-            {
-              "@type": "ListItem",
-              position: 2,
-              name: "Docs",
-              item: docsUrl,
-            },
-          ],
-        }
-      : null;
+  // Home -> Docs breadcrumb, from the shared builder (single source of truth).
+  const breadcrumbSchema = breadcrumbList();
   // SEO: docs landing previously rendered with title "Keploy Documentation" (20c)
   // and meta description "API Test Generator Tool" (23c). Both were too short
   // to capture the intent of a docs visitor (install, capture, replay, SDK).

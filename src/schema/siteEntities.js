@@ -143,6 +143,29 @@ const siteGraph = {
   "@graph": [organizationNode, websiteNode, softwareApplicationNode],
 };
 
+// Every bespoke React page (home, about, glossary, application-development, …)
+// hand-built the same "Home -> Docs" breadcrumb prefix, repeating the site and
+// docs URLs and the position numbering. Centralise it: callers pass only the
+// trail beyond Docs as `{name, item}` crumbs, and this stamps the shared root
+// crumbs and numbers every position, so the breadcrumbs can never disagree
+// between pages.
+const HOME_CRUMB = {name: "Home", item: `${SITE_URL}/`};
+const DOCS_CRUMB = {name: "Docs", item: DOCS_URL};
+
+function breadcrumbList(trail = []) {
+  const items = [HOME_CRUMB, DOCS_CRUMB, ...trail];
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((crumb, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: crumb.name,
+      item: crumb.item,
+    })),
+  };
+}
+
 module.exports = {
   SITE_URL,
   DOCS_URL,
@@ -155,4 +178,5 @@ module.exports = {
   websiteRef,
   siteGraph,
   withTrailingSlash,
+  breadcrumbList,
 };
