@@ -519,11 +519,14 @@ module.exports = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-        gtag: {
-          trackingID: "G-LLS95VWZPC",
-          // Optional fields.
-          anonymizeIP: true, // Should IPs be anonymized?
-        },
+        // GA is loaded on requestIdleCallback from src/metaPixelRouteTracker.js
+        // (fires for every visitor automatically, but after hydration so it
+        // doesn't compete with LCP). The eager gtag preset is disabled so GA
+        // isn't also injected into <head> on the critical path.
+        // gtag: {
+        //   trackingID: "G-LLS95VWZPC",
+        //   anonymizeIP: true,
+        // },
         // Will be passed to @docusaurus/plugin-content-sitemap
         sitemap: {
           // Per v2.0.0-alpha.72 cacheTime is now deprecated
@@ -624,21 +627,12 @@ module.exports = {
 
   clientModules: [require.resolve("./src/metaPixelRouteTracker.js")],
   scripts: [
-    {
-      src: "/docs/scripts/feedback.js",
-      async: true,
-      defer: true,
-    },
-    {
-      src: "/docs/scripts/clarity.js",
-      async: true,
-      defer: true,
-    },
-    {
-      src: "/docs/js/apollo-init.js",
-      async: true,
-      defer: true,
-    },
+    // feedback.js (Hotjar), clarity.js and apollo-init.js were moved out of this
+    // eager list. Together with GA and the Meta Pixel they now load on
+    // requestIdleCallback from src/metaPixelRouteTracker.js -- they still fire
+    // for every visitor automatically (no interaction needed), just after the
+    // page has rendered so they don't compete with hydration / LCP. keploy's own
+    // first-party telemetry (~2 KiB) stays eager.
     {
       src: "https://telemetry.keploy.io/sessions/sdk.js",
       async: true,

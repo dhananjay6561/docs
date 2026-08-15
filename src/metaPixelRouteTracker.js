@@ -1,17 +1,47 @@
-// Meta Pixel loader + SPA PageView tracker.
+// Idle-loads every non-critical tracker so they fire for *every* visitor
+// automatically (no user interaction required) but only AFTER the page has
+// rendered — via requestIdleCallback — so they don't compete with React
+// hydration / the LCP paint.
 //
-// The base snippet used to run synchronously in docusaurus.config.js headTags,
-// which blocked head parsing on every page load while it injected fbevents.js.
-// It now loads lazily here: on the initial route we defer the bootstrap until
-// the browser is idle (requestIdleCallback), and on client-side navigation we
-// re-fire PageView (Docusaurus is an SPA, so in-app nav isn't tracked
-// automatically).
+// Covers: Google Analytics (gtag), Meta Pixel, Microsoft Clarity, Hotjar
+// (feedback widget) and Apollo. All were previously eager (GA via the gtag
+// preset in <head>; the rest as eager <script> tags in docusaurus.config.js).
+// keploy's own first-party telemetry stays eager (tiny, and first-party).
+//
+// Also fires GA + Meta Pixel pageviews on client-side (SPA) route changes.
+
+const GA_ID = "G-LLS95VWZPC";
 const PIXEL_ID = "2006330080011702";
 
-// Standard Meta Pixel bootstrap. The stub queues fbq() calls until
-// fbevents.js finishes loading, so init/track are safe to call immediately.
-function bootstrapPixel() {
-  if (typeof window === "undefined" || window.fbq) return;
+// baseUrl is /docs/, so these resolve under the docs site root.
+const DEFERRED_SCRIPTS = [
+  "/docs/scripts/feedback.js", // feedback widget + Hotjar
+  "/docs/scripts/clarity.js", // Microsoft Clarity
+  "/docs/js/apollo-init.js", // Apollo
+];
+
+function injectScript(src) {
+  const el = document.createElement("script");
+  el.src = src;
+  el.async = true;
+  document.head.appendChild(el);
+}
+
+// --- Google Analytics (gtag) ---------------------------------------------
+function loadGA() {
+  if (window.gtag) return;
+  injectScript(`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () {
+    window.dataLayer.push(arguments);
+  };
+  window.gtag("js", new Date());
+  window.gtag("config", GA_ID, {anonymize_ip: true});
+}
+
+// --- Meta Pixel ----------------------------------------------------------
+function loadPixel() {
+  if (window.fbq) return;
   /* eslint-disable */
   !(function (f, b, e, v, n, t, s) {
     if (f.fbq) return;
@@ -39,43 +69,55 @@ function bootstrapPixel() {
   window.fbq("track", "PageView");
 }
 
-// Defer the (non-critical, third-party) pixel until the main thread is idle so
-// it never competes with hydration / LCP. Falls back to a timeout on browsers
-// without requestIdleCallback (e.g. Safari).
-//
-// Guarded so rapid SPA navigations before the idle callback fires can't queue
-// multiple timers — we only ever schedule the bootstrap once (bootstrapPixel
-// also no-ops if window.fbq already exists, so this is belt-and-suspenders).
-let bootstrapScheduled = false;
-function scheduleBootstrap() {
-  if (typeof window === "undefined" || bootstrapScheduled) return;
-  bootstrapScheduled = true;
-  const ric =
-    window.requestIdleCallback ||
-    function (cb) {
-      return window.setTimeout(cb, 2000);
-    };
-  ric(bootstrapPixel);
+// --- Load everything once, on idle ---------------------------------------
+let loaded = false;
+function loadAll() {
+  if (loaded || typeof window === "undefined") return;
+  loaded = true;
+  loadGA();
+  loadPixel();
+  DEFERRED_SCRIPTS.forEach(injectScript);
+}
+
+function scheduleLoad() {
+  if (typeof window === "undefined" || loaded) return;
+  // Fire AFTER the window `load` event (i.e. after the LCP paint), then on the
+  // next idle. This keeps the trackers entirely off the render/LCP path while
+  // still firing automatically for every visitor — no interaction required.
+  const onIdle = () => {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(loadAll, {timeout: 3000});
+    } else {
+      window.setTimeout(loadAll, 500); // Safari has no requestIdleCallback
+    }
+  };
+  if (document.readyState === "complete") {
+    onIdle(); // load already fired (e.g. late hydration / SPA re-entry)
+  } else {
+    window.addEventListener("load", onIdle, {once: true});
+  }
 }
 
 export function onRouteDidUpdate({location, previousLocation}) {
-  // Initial page load: previousLocation is null. Kick off the deferred load.
+  // Initial page load: defer all trackers to idle.
   if (!previousLocation) {
-    scheduleBootstrap();
+    scheduleLoad();
     return;
   }
+  // Client-side navigation.
   if (location.pathname !== previousLocation.pathname) {
-    if (typeof window.fbq === "function") {
-      window.fbq("track", "PageView");
+    if (loaded) {
+      // Trackers already up — record the SPA pageview on GA + the Pixel.
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "page_view", {page_path: location.pathname});
+      }
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "PageView");
+      }
     } else {
-      // Pixel hasn't finished its idle bootstrap yet. A real SPA navigation
-      // means the user is active, so deferral no longer buys anything — bootstrap
-      // synchronously now instead of re-scheduling into the (not-yet-fired) idle
-      // window. bootstrapPixel creates the fbq stub and fires init + this page's
-      // PageView immediately (the stub queues them until fbevents.js loads), so
-      // this navigation isn't dropped. Any already-scheduled idle callback then
-      // no-ops because window.fbq now exists.
-      bootstrapPixel();
+      // A navigation before idle fired — bring everything up now (loadGA/
+      // loadPixel fire the initial pageview for this route).
+      loadAll();
     }
   }
 }
