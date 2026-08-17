@@ -182,12 +182,23 @@ module.exports = {
         },
       }),
     },
-    // Meta Pixel Code
-    // The pixel bootstrap (fbevents.js + init + PageView) used to run
-    // synchronously here during head parse, blocking the main thread on every
-    // page. It now loads lazily on requestIdleCallback from the client module
-    // src/metaPixelRouteTracker.js (which also re-fires PageView on SPA route
-    // changes). Only the <noscript> fallback remains inline.
+    // Meta Pixel Code — fires eagerly (init + PageView) on load so conversion
+    // tracking is accurate from the first paint. Intentionally NOT deferred.
+    // SPA route changes re-fire PageView from src/metaPixelRouteTracker.js.
+    {
+      tagName: "script",
+      attributes: {},
+      innerHTML: `!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2006330080011702');
+fbq('track', 'PageView');`,
+    },
     {
       tagName: "noscript",
       attributes: {},
@@ -519,14 +530,14 @@ module.exports = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-        // GA is loaded on requestIdleCallback from src/metaPixelRouteTracker.js
-        // (fires for every visitor automatically, but after hydration so it
-        // doesn't compete with LCP). The eager gtag preset is disabled so GA
-        // isn't also injected into <head> on the critical path.
-        // gtag: {
-        //   trackingID: "G-LLS95VWZPC",
-        //   anonymizeIP: true,
-        // },
+        // GA fires eagerly via the standard gtag preset (loads on page load +
+        // auto-tracks SPA route changes) so analytics are accurate from the
+        // first paint. Intentionally NOT idle-deferred.
+        gtag: {
+          trackingID: "G-LLS95VWZPC",
+          // Optional fields.
+          anonymizeIP: true, // Should IPs be anonymized?
+        },
         // Will be passed to @docusaurus/plugin-content-sitemap
         sitemap: {
           // Per v2.0.0-alpha.72 cacheTime is now deprecated
