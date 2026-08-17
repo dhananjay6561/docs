@@ -1,23 +1,33 @@
-// Idle-loads every non-critical tracker so they fire for *every* visitor
-// automatically (no user interaction required) but only AFTER the page has
-// rendered — via requestIdleCallback — so they don't compete with React
-// hydration / the LCP paint.
+// Analytics loader + SPA pageview tracker.
 //
-// Covers: Google Analytics (gtag), Meta Pixel, Microsoft Clarity, Hotjar
-// (feedback widget) and Apollo. All were previously eager (GA via the gtag
-// preset in <head>; the rest as eager <script> tags in docusaurus.config.js).
-// keploy's own first-party telemetry stays eager (tiny, and first-party).
+// Loading strategy:
+//   - Google Analytics (gtag) + Meta Pixel  -> loaded on IDLE
+//     (requestIdleCallback after the load event). They fire for EVERY visitor
+//     automatically, no interaction required, just after the page paints so they
+//     stay off the render / LCP path.
+//   - Microsoft Clarity + Apollo            -> loaded on the FIRST USER
+//     INTERACTION (scroll / click / key / touch). These only matter for engaged
+//     sessions, so gating them keeps them entirely off the initial load.
+//   - Hotjar                                -> removed.
+//   - keploy telemetry                      -> stays eager (first-party, ~2 KiB)
+//     in docusaurus.config.js.
 //
-// Also fires GA + Meta Pixel pageviews on client-side (SPA) route changes.
+// GA + Meta Pixel pageviews are also re-fired on client-side (SPA) route changes.
 
 const GA_ID = "G-LLS95VWZPC";
 const PIXEL_ID = "2006330080011702";
 
 // baseUrl is /docs/, so these resolve under the docs site root.
-const DEFERRED_SCRIPTS = [
-  "/docs/scripts/feedback.js", // feedback widget + Hotjar
+const INTERACTION_SCRIPTS = [
   "/docs/scripts/clarity.js", // Microsoft Clarity
   "/docs/js/apollo-init.js", // Apollo
+];
+const INTERACTION_EVENTS = [
+  "pointerdown",
+  "keydown",
+  "scroll",
+  "touchstart",
+  "mousemove",
 ];
 
 function injectScript(src) {
@@ -69,45 +79,58 @@ function loadPixel() {
   window.fbq("track", "PageView");
 }
 
-// --- Load everything once, on idle ---------------------------------------
-let loaded = false;
-function loadAll() {
-  if (loaded || typeof window === "undefined") return;
-  loaded = true;
+// --- Core (GA + Pixel), on idle — fires for every visitor ----------------
+let coreLoaded = false;
+function loadCore() {
+  if (coreLoaded || typeof window === "undefined") return;
+  coreLoaded = true;
   loadGA();
   loadPixel();
-  DEFERRED_SCRIPTS.forEach(injectScript);
 }
-
-function scheduleLoad() {
-  if (typeof window === "undefined" || loaded) return;
-  // Fire AFTER the window `load` event (i.e. after the LCP paint), then on the
-  // next idle. This keeps the trackers entirely off the render/LCP path while
-  // still firing automatically for every visitor — no interaction required.
+function scheduleCore() {
+  if (typeof window === "undefined" || coreLoaded) return;
   const onIdle = () => {
     if (window.requestIdleCallback) {
-      window.requestIdleCallback(loadAll, {timeout: 3000});
+      window.requestIdleCallback(loadCore, {timeout: 3000});
     } else {
-      window.setTimeout(loadAll, 500); // Safari has no requestIdleCallback
+      window.setTimeout(loadCore, 500); // Safari has no requestIdleCallback
     }
   };
   if (document.readyState === "complete") {
-    onIdle(); // load already fired (e.g. late hydration / SPA re-entry)
+    onIdle();
   } else {
     window.addEventListener("load", onIdle, {once: true});
   }
 }
 
+// --- Engagement (Clarity + Apollo), on first interaction -----------------
+let engagementLoaded = false;
+function loadEngagement() {
+  if (engagementLoaded || typeof window === "undefined") return;
+  engagementLoaded = true;
+  INTERACTION_EVENTS.forEach((e) =>
+    window.removeEventListener(e, loadEngagement)
+  );
+  INTERACTION_SCRIPTS.forEach(injectScript);
+}
+function armEngagement() {
+  if (typeof window === "undefined") return;
+  INTERACTION_EVENTS.forEach((e) =>
+    window.addEventListener(e, loadEngagement, {passive: true})
+  );
+}
+
 export function onRouteDidUpdate({location, previousLocation}) {
-  // Initial page load: defer all trackers to idle.
+  // Initial page load: idle-load GA + Pixel, arm the interaction loader.
   if (!previousLocation) {
-    scheduleLoad();
+    scheduleCore();
+    armEngagement();
     return;
   }
-  // Client-side navigation.
+  // Client-side navigation is itself engagement.
   if (location.pathname !== previousLocation.pathname) {
-    if (loaded) {
-      // Trackers already up — record the SPA pageview on GA + the Pixel.
+    loadEngagement();
+    if (coreLoaded) {
       if (typeof window.gtag === "function") {
         window.gtag("event", "page_view", {page_path: location.pathname});
       }
@@ -115,9 +138,7 @@ export function onRouteDidUpdate({location, previousLocation}) {
         window.fbq("track", "PageView");
       }
     } else {
-      // A navigation before idle fired — bring everything up now (loadGA/
-      // loadPixel fire the initial pageview for this route).
-      loadAll();
+      loadCore();
     }
   }
 }
