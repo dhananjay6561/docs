@@ -46,7 +46,7 @@ jobs:
           base="origin/${{ github.base_ref }}"
           # Match the actual render-blocking stylesheet URL (…googleapis.com/css…),
           # not prose mentions of the domain, to avoid false positives on comments.
-          added=$(git diff --diff-filter=AM "$base"...HEAD -- '*.js' '*.jsx' '*.ts' '*.tsx' '*.json' '*.md' '*.mdx' '*.html' \
+          added=$(git diff --diff-filter=AM "$base"...HEAD -- '*.js' '*.jsx' '*.ts' '*.tsx' '*.json' '*.md' '*.mdx' '*.html' '*.css' \
             | grep -E '^\+' | grep -E 'fonts\.googleapis\.com/css' || true)
           if [ -n "$added" ]; then
             echo "::error::New external Google Fonts reference detected. Self-host the font (src/fonts/*.woff2 + @font-face in src/css/custom.css) instead of a render-blocking <link>:"

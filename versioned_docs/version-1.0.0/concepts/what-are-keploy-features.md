@@ -14,7 +14,7 @@ keywords:
 
 Keploy captures all the API calls and subsequent network traffic served by the application. You can use any existing API management tools like Postman, curl to generate test-case.
 
-<video autoPlay loop muted playsInline width="1074" height="782" style={{width:'80%',height:'auto'}} aria-label="API Tools" poster="/docs/img/record-api-poster.jpg"><source src="/docs/img/record-api.mp4" type="video/mp4" /></video>
+<video autoPlay loop muted playsInline width="800" height="582" style={{width:'80%',height:'auto'}} aria-label="API Tools" poster="/docs/img/record-api-poster.jpg"><source src="/docs/img/record-api.mp4" type="video/mp4" /></video>
 
 ### 2. Automatically mock Mutations
 

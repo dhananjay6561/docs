@@ -638,11 +638,12 @@ fbq('track', 'PageView');`,
 
   clientModules: [require.resolve("./src/metaPixelRouteTracker.js")],
   scripts: [
-    // Analytics were moved out of this eager list and are loaded from
-    // src/metaPixelRouteTracker.js instead (see there for the full strategy):
-    //   - GA + Meta Pixel  -> on idle (fire for every visitor, no interaction)
-    //   - Clarity + Apollo -> on first user interaction
-    //   - Hotjar           -> removed
+    // Analytics loading (see src/metaPixelRouteTracker.js for the full strategy):
+    //   - GA          -> eager via the gtag preset (auto SPA tracking)
+    //   - Meta Pixel  -> eager via the inline snippet in headTags; SPA re-fire
+    //                    from the client module
+    //   - Clarity + Apollo -> lazy, on first user interaction (client module)
+    //   - Hotjar      -> removed
     // keploy's own first-party telemetry (~2 KiB) stays eager below.
     {
       src: "https://telemetry.keploy.io/sessions/sdk.js",
@@ -651,16 +652,6 @@ fbq('track', 'PageView');`,
       "data-endpoint": "https://telemetry.keploy.io/sessions/collect",
       "data-source": "docs",
     },
-    /*{
-      src: "/docs/scripts/chat.js",
-      async: true,
-      defer: true,
-    },
-     {
-       src: "/scripts/fullstory.js",
-       async: true,
-       defer: true,
-     },*/
   ],
 };
 

@@ -138,8 +138,11 @@ function resolveStaticPath(src) {
   // Skip remote, protocol-relative, and data URIs.
   if (/^(https?:)?\/\//i.test(clean) || /^data:/i.test(clean)) return null;
 
-  // Skip relative paths — we can't reliably anchor them to static/ here.
-  if (clean.startsWith(".")) return null;
+  // Only site-absolute paths (leading "/") map to static/. Bare relative paths
+  // ("img/x.png", "./x.png", "../x.png") are relative to the doc file, not
+  // static/, so we can't anchor them here — skip, to avoid accidentally
+  // stamping a same-named file that happens to live under static/.
+  if (!clean.startsWith("/")) return null;
 
   // Only attempt raster formats with a fixed intrinsic pixel size.
   const ext = path.extname(clean).toLowerCase();

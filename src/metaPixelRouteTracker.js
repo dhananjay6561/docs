@@ -16,13 +16,10 @@ const INTERACTION_SCRIPTS = [
   "/docs/scripts/clarity.js", // Microsoft Clarity
   "/docs/js/apollo-init.js", // Apollo
 ];
-const INTERACTION_EVENTS = [
-  "pointerdown",
-  "keydown",
-  "scroll",
-  "touchstart",
-  "mousemove",
-];
+// NB: no "mousemove" — on desktop the pointer moves within milliseconds of
+// paint, which would defeat the gate and load Clarity/Apollo almost immediately.
+// These are genuine "engaged intent" signals only.
+const INTERACTION_EVENTS = ["pointerdown", "keydown", "scroll", "touchstart"];
 
 let engagementLoaded = false;
 function loadEngagement() {
