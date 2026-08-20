@@ -67,6 +67,6 @@ Hope this helps you out, if you still have any questions, reach out to us .
 
 ## Related
 
-- [API Testing – Frequently Asked Questions](/docs/keploy-explained/api-testing-faq/) — API testing FAQ.
+- [API Testing — Frequently Asked Questions](/docs/keploy-explained/api-testing-faq/) — API testing FAQ.
 - [Unit Testing FAQ](/docs/keploy-explained/unit-testing-faq/) — unit testing FAQ.
 - [How Keploy Works?](/docs/keploy-explained/how-keploy-works/) — how integration tests are captured.

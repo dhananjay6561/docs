@@ -107,5 +107,5 @@ Hope this helps you out, if you still have any questions, reach out to us .
 ## Related
 
 - [Integration Testing FAQ](/docs/keploy-explained/integration-testing-faq/) — integration testing FAQ.
-- [API Testing – Frequently Asked Questions](/docs/keploy-explained/api-testing-faq/) — API testing FAQ.
+- [API Testing — Frequently Asked Questions](/docs/keploy-explained/api-testing-faq/) — API testing FAQ.
 - [Best practices for unit testing and UTG?](/docs/keploy-explained/utg-best-practices/) — unit testing tips.

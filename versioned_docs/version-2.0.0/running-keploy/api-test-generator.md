@@ -91,7 +91,7 @@ https://<your-ngrok-url>/petclinic/api
 ### Step B: Setting up the pre-requisites
 
 **CURL Commands (Required):**
-Paste at least 3–5 working curl requests for the endpoints.
+Paste at least 3-5 working curl requests for the endpoints.
 
 ```bash
 # Test 1: GET all owners
@@ -619,7 +619,7 @@ From the dashboard, you can:
 
 ## Tips for Accurate Results
 
-- Always paste at least 3–5 valid cURL commands
+- Always paste at least 3-5 valid cURL commands
 - Ensure your Live URL is active and responsive
 - Use OpenAPI schemas for better request/response modeling
 - Include real production-like inputs wherever possible

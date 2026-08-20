@@ -19,8 +19,8 @@ In the **Test Suites** list, hover over a suite row and click the **Share** icon
 
 The **Share Test Suites** modal appears with two tabs:
 
-- **Find People** – Search for colleagues already in your Organization/Workspace. Permissions are inherited from your Team settings.
-- **Add New User** – Invite someone via email.
+- **Find People** — Search for colleagues already in your Organization/Workspace. Permissions are inherited from your Team settings.
+- **Add New User** — Invite someone via email.
 
 ## Confirm & Notify
 

@@ -42,6 +42,6 @@ Want to learn more about how AI powers Keploy? [Contact us](mailto:support@keplo
 ## Related
 
 - [Unit Testing FAQ](/docs/keploy-explained/unit-testing-faq/) — which AI models power test generation.
-- [API Testing – Frequently Asked Questions](/docs/keploy-explained/api-testing-faq/) — how AI handles API testing.
+- [API Testing — Frequently Asked Questions](/docs/keploy-explained/api-testing-faq/) — how AI handles API testing.
 - [Supported Languages for Unit Testing](/docs/keploy-explained/supported-languages/) — languages our AI supports.
 - [Code Privacy & Data Protection](/docs/keploy-explained/keploy-privacy/) — your code never trains models.

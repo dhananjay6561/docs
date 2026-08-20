@@ -20,7 +20,7 @@ export const QuickStartTabs = () => {
     ai: {
       id: "ai",
       label: "AI-Gen Quickstart",
-      time: "5–10 min",
+      time: "5-10 min",
       icon: FaMagic,
       color: "orange",
       headline: "Quickstart: AI Test Generation",
@@ -53,7 +53,7 @@ export const QuickStartTabs = () => {
       time: "10 min",
       icon: FaVideo,
       color: "gray",
-      headline: "Quickstart: Record–Replay Locally",
+      headline: "Quickstart: Record-Replay Locally",
       steps: [
         {
           icon: FaDownload,

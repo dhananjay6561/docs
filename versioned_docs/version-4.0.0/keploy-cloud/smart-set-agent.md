@@ -204,7 +204,7 @@ You handle EVERYTHING else autonomously — discover the app, the branch, the fa
 
 ## Hard rules
 
-0. **Native MCP transport only — NEVER Python+urllib shell fallback.** Verify Keploy MCP tools are loaded. **If your tool list shows ONLY the meta-tools** (`get_auth_status`, `search_tools`, `get_tool_schema`, `invoke_tool`), the real tools are hidden server-side to save context. You already KNOW the names you need — fetch their schemas in ONE batched `get_tool_schema({names:[…]})` call, then run each via `invoke_tool({name, arguments})`. The smart-set names: `listApps`, `getApp`, `listBranches`, `create_branch`, `listTestReports`, `getTestReportFull`, `listSmartTestCases`, `updateSmartTestCase`, `setSmartTestCaseObsolete`, `deleteSmartTestCase`, `upsertSmartMock`, `deleteSmartMock`, `getMock`, `uploadRecordingBundle`. Do NOT use `search_tools` for a name you already have (fuzzy search returns 5–10 unrelated schemas, ~10× the tokens). Reserve `search_tools` ONLY for a name you genuinely don't know.
+0. **Native MCP transport only — NEVER Python+urllib shell fallback.** Verify Keploy MCP tools are loaded. **If your tool list shows ONLY the meta-tools** (`get_auth_status`, `search_tools`, `get_tool_schema`, `invoke_tool`), the real tools are hidden server-side to save context. You already KNOW the names you need — fetch their schemas in ONE batched `get_tool_schema({names:[…]})` call, then run each via `invoke_tool({name, arguments})`. The smart-set names: `listApps`, `getApp`, `listBranches`, `create_branch`, `listTestReports`, `getTestReportFull`, `listSmartTestCases`, `updateSmartTestCase`, `setSmartTestCaseObsolete`, `deleteSmartTestCase`, `upsertSmartMock`, `deleteSmartMock`, `getMock`, `uploadRecordingBundle`. Do NOT use `search_tools` for a name you already have (fuzzy search returns 5-10 unrelated schemas, ~10× the tokens). Reserve `search_tools` ONLY for a name you genuinely don't know.
 
 1. **Branch-first — and the substrate ENFORCES it.** Main is read-only for smart-set: every edit/delete/obsolete/mock-write is branch-scoped and a write without a `branch_id` is REJECTED (`ErrSmartMutationRequiresBranch` / "requires a branch"). Resolve `branch_id` before any write. If a tool rejects the write for a missing branch, you skipped this — resolve the branch and retry, don't ask the dev.
 2. **Keploy branch name = git branch name.** Detect via `git rev-parse --abbrev-ref HEAD`. Pass that string to `create_branch` (find-or-create, idempotent). Reuse the returned `branch_id` for every write this session. The branch literally named `main` is reserved — never target it.
@@ -257,7 +257,7 @@ getTestReportFull({
 })
 ```
 
-`failed_only: true` + the projection drops the call from ~34k → ~1–2k tokens. **Never** drop `fields=`. Path params (`appId`,`reportId`) are camelCase; query params (`include_oss_report`,`failed_only`,`mock_mismatches_only`,`max_test_cases_per_set`,`fields`) stay snake_case. For mock-driven failures, make a SECOND call with `mock_mismatches_only: true` projected to `…oss_report.mock_mismatches.actual_mocks[].name`/`.kind` to get the `mock-N` ids. The smart-set case name is `test-N` (stable across edits) — read `test_case_name`.
+`failed_only: true` + the projection drops the call from ~34k → ~1-2k tokens. **Never** drop `fields=`. Path params (`appId`,`reportId`) are camelCase; query params (`include_oss_report`,`failed_only`,`mock_mismatches_only`,`max_test_cases_per_set`,`fields`) stay snake_case. For mock-driven failures, make a SECOND call with `mock_mismatches_only: true` projected to `…oss_report.mock_mismatches.actual_mocks[].name`/`.kind` to get the `mock-N` ids. The smart-set case name is `test-N` (stable across edits) — read `test_case_name`.
 
 ### Phase A3 — Diagnose each failing case
 
@@ -299,7 +299,7 @@ Handle each failing case independently. Obsolete a contract that no longer exist
 
 ### Phase A4 — Verify (ON THE BRANCH)
 
-After a Case 1 source edit, rebuild the image first (`docker build -t <manifest-image-tag> <ctx>`; Case A/B/C skip this). Then replay on the branch, **piping output through `tail`/`grep`** so the ~10–40k-token log doesn't enter context:
+After a Case 1 source edit, rebuild the image first (`docker build -t <manifest-image-tag> <ctx>`; Case A/B/C skip this). Then replay on the branch, **piping output through `tail`/`grep`** so the ~10-40k-token log doesn't enter context:
 
 ```bash
 keploy cloud replay --app <ns.deployment> --branch-name <git branch> --cluster <cluster-name> --replay-source smart-set --freezeTime --disableReportUpload=false --strict-failure 2>&1 \
