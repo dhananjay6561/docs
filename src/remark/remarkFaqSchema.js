@@ -28,7 +28,11 @@ function textOf(node) {
     // ". " between items so they don't fuse; strip any trailing "." the item
     // already carries first, so a bulleted sentence doesn't become "…).. next".
     return children
-      .map((li) => textOf(li).trim().replace(/\.\s*$/, ""))
+      .map((li) =>
+        textOf(li)
+          .trim()
+          .replace(/\.\s*$/, "")
+      )
       .filter(Boolean)
       .join(". ");
   }
