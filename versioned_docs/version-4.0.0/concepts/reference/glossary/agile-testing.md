@@ -2,7 +2,7 @@
 id: agile-unit-testing
 title: Agile Unit Testing
 sidebar_label: Agile Unit Testing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+description: What agile unit testing is, how it fits iterative development and TDD, and how it keeps fast feedback and code quality high across sprints.
 tags:
   - explanation
   - Glossary

@@ -2,7 +2,7 @@
 id: samples-mux
 title: Sample Product Catalog App (Golang)
 sidebar_label: Mux + Postgres
-description: The following sample app showcases how to use Mux framework and the Keploy Platform.
+description: Test a Go Gorilla/Mux product-catalog API backed by Postgres with Keploy — record real requests and replay them as tests with auto-generated mocks.
 tags:
   - go
   - quickstart

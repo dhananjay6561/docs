@@ -2,7 +2,7 @@
 id: samples-mysql
 title: Mux MySQL Sample Application
 sidebar_label: Mux + MySQL
-description: The following sample app showcases how to use Mux framework and the Keploy Platform.
+description: Record and replay API tests for a Go Gorilla/Mux app backed by MySQL using Keploy — capture real traffic and generate test cases with mocks.
 tags:
   - go
   - quickstart
