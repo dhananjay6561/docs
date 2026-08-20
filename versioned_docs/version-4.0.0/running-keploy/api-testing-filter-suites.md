@@ -1,7 +1,7 @@
 ---
 id: api-testing-filter-suites
 title: Using Filtering in Test Suites
-description: Guide to add filters for test suites
+description: Filter API test suites in Keploy by labels, status, or metadata to focus a test run on the specific subset of suites you care about.
 sidebar_label: Filter Test Suites
 tags:
   - api-testing

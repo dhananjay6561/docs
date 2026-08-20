@@ -2,7 +2,7 @@
 id: general-glossary
 title: General Glossary for Users
 sidebar_label: Glossary
-description: Plain-language definitions of common software testing terms — unit, integration, end-to-end, regression, mocks, and stubs — for developers getting started with Keploy.
+description: Plain-language definitions of software testing terms — unit, integration, end-to-end, regression, mocks, and stubs — for developers new to Keploy.
 tags:
   - explanation
   - reference
