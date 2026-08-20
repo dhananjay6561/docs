@@ -97,7 +97,10 @@ fbq('track', 'PageView');`,
     // End Meta Pixel Code
   ],
   title: "Keploy Documentation",
-  titleDelimiter: "🐰",
+  // Plain "|" delimiter for React-page <title>s (about, security, …). The old
+  // "🐰" put an emoji in SERP titles; this keeps them clean and aligns with the
+  // "|" suffix the docs theme (DocItem) uses.
+  titleDelimiter: "|",
   tagline: "API Test Generator Tool",
   url: "https://keploy.io",
   baseUrl: "/docs/",
@@ -161,8 +164,13 @@ fbq('track', 'PageView');`,
       },
       {name: "twitter:card", content: "summary_large_image"},
       {
+        // 1200x630 card committed to this repo (static/img/), so it can't 404
+        // from a change in the landing app. The old
+        // https://keploy.io/images/keploy-hero.png returned the landing app's
+        // 404 page, breaking every social/OG preview and the Article schema
+        // image fallback that reused it.
         property: "og:image",
-        content: "https://keploy.io/images/keploy-hero.png",
+        content: "https://keploy.io/docs/img/keploy-docs-card.png",
       },
       {property: "og:image:width", content: "1200"},
       {property: "og:image:height", content: "630"},

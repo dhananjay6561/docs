@@ -172,10 +172,24 @@ export default function DocItem(props) {
     ? toAbsoluteUrl(siteConfig?.url, imageWithBaseUrl)
     : null;
   // Article schema requires an `image`; fall back to the site-wide default
-  // social card (the same 1200x630 og:image set in docusaurus.config.js) when
-  // a doc has no front-matter image, so every Article carries a valid image.
-  const articleImage =
-    socialImage || "https://keploy.io/images/keploy-hero.png";
+  // social card when a doc has no front-matter image, so every Article carries
+  // a valid image. The card is committed to this repo's static/img/ and served
+  // from /docs/img/, so it can't 404 from a change in the landing repo (the old
+  // https://keploy.io/images/keploy-hero.png fallback did exactly that). Same
+  // 1200x630 card as the og:image default in docusaurus.config.js.
+  const defaultSocialCard = toAbsoluteUrl(
+    siteConfig?.url,
+    `${siteConfig?.baseUrl ?? "/"}img/keploy-docs-card.png`
+  );
+  const articleImage = socialImage || defaultSocialCard;
+  // See the <title> tag below. Append the brand suffix only when the result
+  // stays within SEMrush's 60-char SERP budget, and skip it when the title
+  // already ends in the brand (avoids "… Keploy Docs | Keploy Docs").
+  const TITLE_SUFFIX = " | Keploy Docs";
+  const docTitle =
+    title.length + TITLE_SUFFIX.length <= 60 && !/keploy docs\s*$/i.test(title)
+      ? `${title}${TITLE_SUFFIX}`
+      : title;
   const normalizedMetaKeywords = Array.isArray(metaKeywords)
     ? metaKeywords.join(", ")
     : metaKeywords;
@@ -306,9 +320,11 @@ export default function DocItem(props) {
     <>
       <Head>
         {/* Suffix differentiates the <title> from the on-page <h1> (which is
-            also `title`), clearing SEMrush "Duplicate content in h1 and title"
-            across all doc pages. */}
-        <title>{`${title} | Keploy Docs`}</title>
+            also `title`), clearing SEMrush "Duplicate content in h1 and title".
+            Only appended when it keeps the title within SEMrush's 60-char SERP
+            limit, so title hygiene doesn't trade the duplicate-h1 warning for a
+            title-too-long one; skipped if the title already ends in the brand. */}
+        <title>{docTitle}</title>
         {description && <meta name="description" content={description} />}
         {normalizedMetaKeywords && (
           <meta name="keywords" content={normalizedMetaKeywords} />
