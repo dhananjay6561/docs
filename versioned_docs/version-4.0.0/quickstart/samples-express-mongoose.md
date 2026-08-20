@@ -2,7 +2,7 @@
 id: express-mongoose-application
 title: sample course selling api (express)
 sidebar_label: NodeJS - Express + Mongoose
-description: The following sample app showcases how to use NodeJS framework and the Keploy Platform.
+description: Test a Node.js Express course-selling API with Keploy — record real requests and replay them as testcases with auto-generated mocks.
 tags:
   - javascript
   - quickstart

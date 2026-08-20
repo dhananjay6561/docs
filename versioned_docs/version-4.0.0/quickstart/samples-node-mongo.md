@@ -3,7 +3,7 @@ id: crud-nodejs
 title: Node.js MongoDB Sample
 sidebar_label: NodeJS - Express + Mongoose
 hide_title: true
-description: The following sample app showcases how to use NodeJS framework and the Keploy Platform.
+description: Record and replay API tests for a Node.js + MongoDB CRUD app with Keploy — capture real traffic and generate testcases with mocks.
 tags:
   - javascript
   - nodejs

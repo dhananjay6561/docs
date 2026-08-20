@@ -2,7 +2,7 @@
 id: samples-nodejs
 title: Node.js Express Mongoose Sample
 sidebar_label: NodeJS - Express + Mongoose
-description: The following sample app showcases how to use NodeJS framework and the Keploy Platform.
+description: Record and replay API tests for a Node.js Express + Mongoose app with Keploy — capture real API traffic and replay it as testcases.
 tags:
   - javascript
   - quickstart
