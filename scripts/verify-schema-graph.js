@@ -6,7 +6,10 @@
  * reference resolves to a node actually defined on the same page -- an
  * unresolved reference is worse than the inline duplicate it replaced,
  * because consumers get a dangling pointer instead of an entity. This walks
- * the built HTML and fails on unparseable JSON-LD or dangling references.
+ * the built HTML and fails on unparseable JSON-LD, dangling references, or a
+ * regression to the generic `Article` type. noindex pages (archived versions)
+ * are skipped. Note it verifies JSON validity and @id resolution, not that
+ * every emitted `url` actually resolves.
  *
  * Usage: node scripts/verify-schema-graph.js [buildDir]
  */
@@ -14,7 +17,13 @@ const fs = require("fs");
 const path = require("path");
 
 const buildDir = process.argv[2] || "build";
-const SKIP_VERSIONS = ["/1.0.0/", "/2.0.0/"];
+
+// Pages Docusaurus renders with a `noindex` robots meta (archived versions
+// carrying `noIndex: true`, etc.) are skipped: they keep their own legacy
+// schema copies and are never served to crawlers. Detected from the built HTML
+// rather than a hard-coded version list, so it can't drift when a version is
+// archived.
+const NOINDEX_RE = /<meta[^>]+name="robots"[^>]+content="[^"]*noindex/i;
 
 function findHtml(dir, out = []) {
   for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
@@ -28,10 +37,21 @@ function findHtml(dir, out = []) {
   return out;
 }
 
-// The build inlines JSON-LD into <script type="application/ld+json">. Entities
-// are HTML-escaped by React, so unescape before parsing.
+// The build inlines JSON-LD into <script type="application/ld+json">. The
+// <Head>/Helmet emitters HTML-escape entities while the raw-text body <script>
+// (remark FAQ plugin) does not, so unescape defensively before parsing --
+// unescaping already-clean JSON is a no-op here.
 const SCRIPT_RE =
   /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g;
+
+// A page is its own WebPage: the idiomatic `mainEntityOfPage:
+// {"@type":"WebPage","@id":<pageUrl>}` points at the document itself, which has
+// no separate full node. Seed `defined` with the page's own URL so that
+// self-reference resolves, while a typed ref to any *other* undefined @id is
+// still caught as dangling. Use og:url, not the canonical <link>: a few docs
+// set a cross-site canonical (e.g. to the blog), but og:url is always the
+// page's own trailing-slash URL, which is what the schema @id derives from.
+const OG_URL_RE = /<meta[^>]+property="og:url"[^>]+content="([^"]+)"/i;
 
 function unescapeHtml(s) {
   return s
@@ -54,8 +74,14 @@ function walk(node, defined, referenced) {
   }
   const keys = Object.keys(node).filter((k) => k !== "@context");
   if (node["@id"]) {
-    // A node carrying only "@id" is a reference; anything else defines it.
-    if (keys.length === 1) {
+    // A node is a *reference* when it carries nothing beyond @id -- including
+    // the idiomatic typed form {"@type":"Person","@id":"…"}, which has two keys
+    // but still only points at an entity defined elsewhere. Only a node with a
+    // real property (name, url, …) *defines* the entity. Treating typed refs as
+    // definitions would let a typed pointer at an undefined @id pass silently,
+    // which is exactly the dangling case this guard exists to catch.
+    const propsBeyondId = keys.filter((k) => k !== "@id" && k !== "@type");
+    if (propsBeyondId.length === 0) {
       referenced.add(node["@id"]);
     } else {
       defined.add(node["@id"]);
@@ -66,19 +92,27 @@ function walk(node, defined, referenced) {
   }
 }
 
-const files = findHtml(buildDir).filter(
-  (f) => !SKIP_VERSIONS.some((v) => f.includes(v))
-);
+const files = findHtml(buildDir);
 
 let parseErrors = 0;
 let dangling = 0;
 let blocks = 0;
+let scanned = 0;
 const typeCounts = new Map();
 
 for (const file of files) {
   const html = fs.readFileSync(file, "utf8");
+  // Skip noindex pages (archived versions etc.) -- see NOINDEX_RE above.
+  if (NOINDEX_RE.test(html)) {
+    continue;
+  }
+  scanned += 1;
   const defined = new Set();
   const referenced = new Set();
+  const ownUrl = html.match(OG_URL_RE);
+  if (ownUrl) {
+    defined.add(ownUrl[1]);
+  }
   let match;
   SCRIPT_RE.lastIndex = 0;
   while ((match = SCRIPT_RE.exec(html))) {
@@ -108,13 +142,24 @@ for (const file of files) {
   }
 }
 
-console.log(`\nPages scanned:     ${files.length}`);
+// The specialization work replaced every generic `Article` with a subtype
+// (TechArticle / APIReference / BlogPosting). Pin that: a stray generic
+// `Article` reappearing is a regression the shape checks above wouldn't catch.
+const genericArticles = typeCounts.get("Article") || 0;
+
+console.log(`\nPages scanned:     ${scanned}`);
 console.log(`JSON-LD blocks:    ${blocks}`);
 console.log(`Invalid JSON:      ${parseErrors}`);
 console.log(`Dangling @id refs: ${dangling}`);
+console.log(`Generic Article:   ${genericArticles}`);
 console.log("\nTop-level @type distribution:");
 for (const [type, count] of [...typeCounts].sort((a, b) => b[1] - a[1])) {
   console.log(`  ${String(count).padStart(5)}  ${type}`);
 }
+if (genericArticles) {
+  console.error(
+    `\nFAIL: ${genericArticles} generic "Article" node(s) -- use TechArticle/APIReference/BlogPosting.`
+  );
+}
 
-process.exit(parseErrors || dangling ? 1 : 0);
+process.exit(parseErrors || dangling || genericArticles ? 1 : 0);
