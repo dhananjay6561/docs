@@ -8,7 +8,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import {DOCS_URL, organizationRef, websiteRef} from "../schema/siteEntities";
 
-export default function Security() {
+export default function Leadership() {
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
   const team = [
@@ -29,7 +29,10 @@ export default function Security() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Keploy Leadership",
-    url: `${DOCS_URL}Leadership/`,
+    // Docusaurus derives this route from the filename (leadership.js) ->
+    // /docs/leadership/. The capital-L form 404s on case-sensitive hosting, so
+    // the schema URL must match the actual lowercase route.
+    url: `${DOCS_URL}leadership/`,
     isPartOf: websiteRef,
     publisher: organizationRef,
     mainEntity: {
@@ -48,7 +51,7 @@ export default function Security() {
     },
   };
   return (
-    <Layout title="Leadership" permalink="/Leadership" description="<head />">
+    <Layout title="Leadership" permalink="/leadership" description="<head />">
       <Head>
         <script type="application/ld+json">
           {JSON.stringify(leadershipSchema)}
