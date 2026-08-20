@@ -134,10 +134,13 @@ export default function DocItem(props) {
   const isApi =
     frontMatter?.apiReference === true ||
     frontMatter?.type === "api" ||
-    docTags.includes?.("api") ||
-    docTags.includes?.("api-testing") ||
-    // API-reference doc paths (suites, endpoints, CLI, SDK install).
-    /\/running-keploy\/(api-testing-|public-api|cli-commands)|\/server\/sdk-installation\//.test(
+    // Only genuine API/CLI *reference* docs (endpoints, commands) get
+    // APIReference. The `api-testing`/`api` tags and the `api-testing-` path
+    // prefix name Keploy's product feature, not the page genre, so they swept
+    // ~28 task guides (adding-labels, chrome-extension, run-report, …) into
+    // APIReference — the opposite of what they are, and often contradicting the
+    // HowTo block on the same page. Those now fall through to TechArticle.
+    /\/running-keploy\/(public-api|cli-commands)(\/|$)/.test(
       metadata?.permalink || ""
     );
   const isBlog =
@@ -246,6 +249,10 @@ export default function DocItem(props) {
       ? {
           "@context": "https://schema.org",
           "@type": isQuickstart ? [schemaType, "LearningResource"] : schemaType,
+          // Give the article its own @id so it's addressable in a graph built
+          // around @id -- distinct from mainEntityOfPage's @id (the WebPage /
+          // document), which is pageUrl without the fragment.
+          "@id": `${pageUrl}#article`,
           ...(isQuickstart ? {learningResourceType: "Tutorial"} : {}),
           headline: title,
           description,
