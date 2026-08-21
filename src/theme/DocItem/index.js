@@ -190,7 +190,9 @@ export default function DocItem(props) {
   // already ends in the brand (avoids "… Keploy Docs | Keploy Docs").
   const TITLE_SUFFIX = " | Keploy Docs";
   const docTitle =
-    title.length + TITLE_SUFFIX.length <= 60 && !/keploy docs\s*$/i.test(title)
+    title &&
+    title.length + TITLE_SUFFIX.length <= 60 &&
+    !/keploy docs\s*$/i.test(title)
       ? `${title}${TITLE_SUFFIX}`
       : title;
   const normalizedMetaKeywords = Array.isArray(metaKeywords)
