@@ -57,13 +57,22 @@ jobs:
           fi
           echo "No new external font stylesheets."
 
-      - name: New local asset references in markdown must resolve (D2/D3)
+      - name: New local asset references in markdown must resolve (D3)
         run: |
           base="origin/${{ github.base_ref }}"
           # Docusaurus serves static/ at baseUrl /docs/, so an added
-          # src="/docs/<p>" must have a file at static/<p>. onBrokenLinks only
-          # validates links, not <img>/<video>/<source> src, so the "deletions
-          # break zero references" claim needs its own guard here.
+          # src|poster="/docs/<p>" must have a file at static/<p>. onBrokenLinks
+          # only validates links, not <img>/<video>/<source> src or <video>
+          # poster, so this guards that every ADDED reference resolves. Both
+          # attributes are checked: every converted <video> adds a src AND a
+          # poster, so omitting poster would leave half of D3's refs unguarded.
+          #
+          # Scope note: this is the D3 (added-reference) direction only. The
+          # mirror D2 direction — a deletion breaking a pre-existing reference —
+          # is deliberately not guarded here: such references sit on unchanged
+          # lines (invisible to the diff), and a whole-tree scan would
+          # false-positive on non-rendering commented-out mentions that predate
+          # the asset cleanups (e.g. `[//]: #` lines still naming removed GIFs).
           fail=0
           while IFS= read -r rel; do
             [ -z "$rel" ] && continue
@@ -72,7 +81,7 @@ jobs:
               fail=1
             fi
           done < <(git diff --diff-filter=AMR "$base"...HEAD -- '*.md' '*.mdx' '*.js' '*.jsx' '*.ts' '*.tsx' '*.html' \
-            | grep -E '^\+' | grep -oE 'src="/docs/[^"]+"' \
-            | sed -E 's#^src="/docs/##; s#"$##' | sort -u || true)
+            | grep -E '^\+' | grep -oE '(src|poster)="/docs/[^"]+"' \
+            | sed -E 's#^(src|poster)="/docs/##; s#"$##' | sort -u || true)
           if [ "$fail" -eq 0 ]; then echo "All new /docs/ asset references resolve under static/."; fi
           exit "$fail"
