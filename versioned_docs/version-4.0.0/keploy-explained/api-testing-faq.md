@@ -33,6 +33,8 @@ Keploy supports:
 
 ### 3. What protocols and formats does Keploy support?
 
+Keploy supports HTTP/HTTPS (JSON and XML), gRPC (Protocol Buffers), WebSockets (JSON and binary), and GraphQL (queries and mutations). The full support matrix is below:
+
 | Protocol   | Formats          | Features          |
 | ---------- | ---------------- | ----------------- |
 | HTTP/HTTPS | JSON, XML        | Full support      |
