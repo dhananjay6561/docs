@@ -26,7 +26,7 @@ keywords:
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | Edge-case, bugs, coverage flows gets missed     | Higher test coverage across CRUD and failure scenarios                                        |
 | APIs change frequently, leading to broken tests | Self-healing keeps tests even when APIs evolves                                               |
-| 30-50% of time spent writing tests              | 50-80% reduction in test creation <br/> Covers more edge cases within limited resources, time |
+| 30–50% of time spent writing tests              | 50–80% reduction in test creation <br/> Covers more edge cases within limited resources, time |
 
 ## 💥 Why Keploy? Not Other AI Testing Tools
 

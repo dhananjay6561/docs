@@ -1,6 +1,6 @@
 ---
 id: api-testing-faq
-title: API Testing — Frequently Asked Questions
+title: API Testing – Frequently Asked Questions
 sidebar_label: FAQs
 description: Answers to the most common questions about API testing with Keploy.
 tags:
@@ -16,11 +16,11 @@ Let's get to the heart of Keploy API Testing with some fun Q&A!
 
 Keploy automatically creates:
 
-- **Functional Tests** — CRUD operations, endpoint validation
-- **Edge Case Tests** — Invalid payloads, error responses
-- **Performance Tests** — Response time checks
-- **Security Tests** — Input sanitization, auth validation
-- **Dependency Tests** — Mocked external service calls
+- **Functional Tests** – CRUD operations, endpoint validation
+- **Edge Case Tests** – Invalid payloads, error responses
+- **Performance Tests** – Response time checks
+- **Security Tests** – Input sanitization, auth validation
+- **Dependency Tests** – Mocked external service calls
 
 ### 2. How does Keploy handle authentication in API tests?
 

@@ -45,12 +45,12 @@ The **Defect Management Process (DMP)** is a systematic process of detecting, do
 
 ### A proper Defect Management Process involves:
 
-- **Detection** — Detecting defects during testing.
-- **Logging** — Recording defects with detailed information.
-- **Prioritization** — Prioritizing defects based on severity and impact.
-- **Assignment** — Assigning the defect to developers.
-- **Resolution** — Fix implementation.
-- **Verification** — Testing the fix.
+- **Detection** – Detecting defects during testing.
+- **Logging** – Recording defects with detailed information.
+- **Prioritization** – Prioritizing defects based on severity and impact.
+- **Assignment** – Assigning the defect to developers.
+- **Resolution** – Fix implementation.
+- **Verification** – Testing the fix.
 
 ## Why is Defect Management Process Important?
 
