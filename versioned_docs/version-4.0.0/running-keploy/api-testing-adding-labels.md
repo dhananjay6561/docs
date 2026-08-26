@@ -30,9 +30,11 @@ The labeling system includes:
 ### Method 1: Using the Three Dots Menu
 
 1. **Navigate to Test Suites**
+
    - Go to your Test Suites Dashboard
 
 2. **Access Suite Options**
+
    - Locate the test suite you want to label
    - Click the **three dots (⋮)** menu next to the test suite name
 
@@ -58,10 +60,12 @@ When you open the label assignment dialog, you'll see:
 ### Assigning Existing Labels
 
 1. **Browse Categories**
+
    - Expand label categories to see available options
    - Use the search box to find specific labels quickly
 
 2. **Select Labels**
+
    - Click on labels to select them
    - Selected labels will be highlighted or marked with a checkmark ✓
    - You can select multiple labels from different categories
@@ -75,9 +79,11 @@ When you open the label assignment dialog, you'll see:
 ### Creating During Assignment
 
 1. **Open Label Dialog**
+
    - Follow the steps above to open the label assignment interface
 
 2. **Create New Label**
+
    - Click **"Create Custom Label"**
    - Enter label details in the creation form
 

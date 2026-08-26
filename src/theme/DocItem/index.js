@@ -154,10 +154,10 @@ export default function DocItem(props) {
   const schemaType = schemaTypeFromFrontMatter
     ? schemaTypeFromFrontMatter
     : isApi
-      ? "APIReference"
-      : isBlog
-        ? "BlogPosting"
-        : "TechArticle";
+    ? "APIReference"
+    : isBlog
+    ? "BlogPosting"
+    : "TechArticle";
   const authorList = toPersonList(frontMatter?.author || frontMatter?.authors);
   const maintainerList = toPersonList(frontMatter?.maintainer);
   const contributorList = toPersonList(frontMatter?.contributor);

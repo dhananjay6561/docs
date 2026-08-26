@@ -38,10 +38,12 @@ For each generation job, you can view:
 To view details of a specific generation:
 
 1. **Navigate to Generation History**
+
    - Go to the generation history section in Keploy
    - View the list of all generation jobs
 
 2. **Review Job Statistics**
+
    - See the breakdown of accepted, recovered, rejected, and buggy test suites
 
 3. **Check Input Parameters**
@@ -56,6 +58,7 @@ To view details of a specific generation:
 If you find rejected test suites that you want to include:
 
 1. **Locate Rejected Tests**
+
    - Browse through the generation history
    - Identify jobs with rejected test suites
 
@@ -154,21 +157,25 @@ If you find rejected test suites that you want to include:
 ## Best Practices
 
 1. **Regular Review**
+
    - Check generation history regularly
    - Monitor acceptance rates and trends
    - Address rejected tests promptly
 
 2. **Learn from Rejected Tests**
+
    - Analyze why tests were rejected
    - Improve input parameters for future generations
    - Document common issues and solutions
 
 3. **Recover and Reuse**
+
    - Use the plus icon to recover rejected tests
    - Fix and validate rejected test suites
    - Build a comprehensive test coverage
 
 4. **Track Performance**
+
    - Monitor the number of buggy tests
    - Identify problematic endpoints or methods
    - Improve API stability based on insights

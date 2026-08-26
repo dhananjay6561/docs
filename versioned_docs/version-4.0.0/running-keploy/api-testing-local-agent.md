@@ -19,10 +19,12 @@ This guide explains how to use the local agent to test private or local endpoint
 ## Steps to Use the Local Agent
 
 1. **Enter the Endpoint URL**
+
    - Enter the endpoint URL you want to test. This can be a private URL or any other endpoint.
    - You can also enter a localhost link
 
 2. **Download the Keploy Agent**
+
    - Based on your device configuration, download the Keploy agent:
      - **Windows**
      - **Mac**
@@ -36,6 +38,7 @@ This guide explains how to use the local agent to test private or local endpoint
 ![Local Agent](https://keploy-devrel.s3.us-west-2.amazonaws.com/local-agent-2.png)
 
 4. **Record API Calls**
+
    - The Keploy agent will automatically record the API calls you make.
    - It will capture the responses and start generating test suites based on the recorded calls.
 

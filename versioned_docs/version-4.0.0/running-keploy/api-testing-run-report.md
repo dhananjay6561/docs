@@ -35,6 +35,7 @@ For each test run, you can view:
 ### Viewing Report List
 
 1. **Navigate to Run Reports**
+
    - Go to the run reports section in Keploy
    - View the list of all test execution runs
 
@@ -50,6 +51,7 @@ For each test run, you can view:
 Click on any report from the list to view detailed execution results:
 
 1. **Click on Report ID**
+
    - Select a report to view full details
    - Access comprehensive test execution information
 
@@ -147,17 +149,20 @@ Filter by API endpoint or URL path:
 For each test case, you can see:
 
 1. **Test Steps Breakdown**
+
    - Individual steps within each test
    - Request and response details
    - Execution time for each step
 
 2. **Buggy Reasons on Test Steps**
+
    - Detailed error messages displayed on top of the affected step
    - Root cause analysis
    - Stack traces when available
    - Suggested fixes or actions
 
 3. **Failure Reasons from Assertions**
+
    - Expected vs actual values comparison
    - Schema validation errors
    - Assertion failure details

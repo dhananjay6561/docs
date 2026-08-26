@@ -107,7 +107,7 @@ export const Community = () => {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:border-orange-300 hover:shadow-md hover:no-underline dark:border-gray-700 dark:bg-gray-800/50 dark:hover:border-orange-500/50"
+            className="group flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:border-orange-300 hover:no-underline hover:shadow-md dark:border-gray-700 dark:bg-gray-800/50 dark:hover:border-orange-500/50"
           >
             <div
               className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl ${bgColor}`}

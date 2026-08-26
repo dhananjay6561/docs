@@ -24,6 +24,7 @@ The schema coverage page provides a comprehensive view of how well your test sui
 ## Accessing Schema Coverage
 
 1. **Navigate to Test Suite**
+
    - Go to your test suite view
    - Click on the "Schema Coverage" button
 
@@ -101,6 +102,7 @@ View original and generated schemas side by side:
 ## Covering Missing Lines
 
 1. **Click "Cover Missing Lines"**
+
    - Locate the "Cover Missing Lines" button on the schema coverage page
 
 2. **Specify Coverage Requirements**
