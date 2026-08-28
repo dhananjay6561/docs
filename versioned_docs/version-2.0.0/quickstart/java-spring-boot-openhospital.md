@@ -104,7 +104,7 @@ keploy test -c "java -cp "target/openhospital-api-0.1.0.jar:rsc/:static/" org.sp
 🎉 Hooray! You've made it to the end of the binary section! 🎉
 
 Your CLI should look something like this
-<img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/img/Keploy-test-openhospital.webp" alt="Sample Keploy Test Java" width="100%" style={{ borderRadius: '5px' }} />
+<img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/Keploy-test-openhospital.webp" alt="Sample Keploy Test Java" width="100%" style={{ borderRadius: '5px' }} />
 
 This is a summary of the test cases recorded
 <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/img/result-openhospital.webp" alt="Sample Keploy Test Summary Java" width="100%" style={{ borderRadius: '5px' }} />
