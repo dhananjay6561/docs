@@ -145,6 +145,14 @@ TestNG is another testing framework for Java, designed to cover a broader range 
 
 Unit test automation is a fundamental practice in modern software development. By implementing effective unit testing strategies and utilizing the right tools, developers can improve code quality, reduce bugs, and enhance the overall efficiency of their development processes. Whether you're a seasoned developer or new to coding, investing in unit test automation will pay dividends in the long run.
 
+## Related Terms
+
+- [Unit Testing](/docs/concepts/reference/glossary/unit-testing/) — the practice being automated here.
+- [Test-Driven Development](/docs/concepts/reference/glossary/test-driven-development/) — write automated unit tests first.
+- [Mocks](/docs/concepts/reference/glossary/mocks/) — isolate units during automated tests.
+- [JUnit](/docs/concepts/reference/glossary/junit/) — a popular unit test automation framework.
+- [Browse all testing terms](/docs/concepts/reference/glossary/) — the full Keploy glossary.
+
 ## Frequently Asked Questions (FAQ)
 
 ### What is the difference between unit testing and integration testing?

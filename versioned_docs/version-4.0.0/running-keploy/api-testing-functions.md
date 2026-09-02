@@ -19,7 +19,7 @@ Assertions define the **"Pass/Fail"** criteria for your tests. While standard ch
 
 Choose specifically which parts of a JSON response Keploy should validate during a replay.
 
-<img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/img/schema-assertion.webp" width="1178" height="832" />
+<img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/img/schema-assertion.webp" alt="Schema assertion configuration selecting response fields on a Keploy API test" width="1178" height="832" />
 
 **Example Context:** In this window, we are targeting a `GET` request on the `/visits/-1` endpoint that expects a `400` status code. Under **Response Fields**, specific keys like `className` and `exMessage` are selected. Toggling these ensures Keploy validates that these fields are returned as the correct data type (strings) during every replay.
 
@@ -27,7 +27,7 @@ Choose specifically which parts of a JSON response Keploy should validate during
 
 Stack different assertion types, such as verifying a status code while simultaneously checking if a specific field contains a certain value.
 
-<img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/img/multi-assertion.webp" width="920" height="884" />
+<img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/img/multi-assertion.webp" alt="Multiple assertion types applied to a single Keploy API test" width="920" height="884" />
 
 **Example Context:** This setup enforces two rules simultaneously:
 
@@ -51,3 +51,10 @@ Save repeatable validation rules to the Global Custom Functions library so they 
 <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/img/global-functions.webp" alt="Global Functions" width="910" height="666" />
 
 **Example Context:** The library shows reusable logic stored globally. For example, the `customFunction` at the bottom demonstrates an `assert.greater(response.status, 399)` utility, creating a standardized rule to verify error-level status codes across multiple suites.
+
+## Related
+
+- [Custom Assertions](/docs/running-keploy/api-testing-custom-assertions/) — define validation rules.
+- [Bulk Assertions and Schema Validation](/docs/running-keploy/api-testing-bulk-assertions/) — apply assertions in bulk.
+- [Assertion Tree](/docs/running-keploy/api-testing-assertion-tree/) — visualize assertion flow.
+- [Editing Test Suites and Custom Assertions](/docs/running-keploy/api-testing-edit-assertions/) — edit assertions in a suite.

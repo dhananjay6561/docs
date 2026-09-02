@@ -81,6 +81,13 @@ You'd see the changes in the test-case file locally, new noisy fields are added 
 
 Similarly, if the test case result is the new expected response, we can normalise the test report or a particular test case. This will update the expected result of the test case locally.
 
+## Related
+
+- [Keploy Enterprise Installation](/docs/keploy-cloud/cloud-installation/) — prerequisite before starting the console.
+- [Keploy Cloud Application Settings Guide](/docs/keploy-cloud/application-settings/) — add an application to the console.
+- [Mock Registry](/docs/keploy-cloud/mock-registry/) — manage mocks used during test runs.
+- [Time Freezing](/docs/keploy-cloud/time-freezing/) — stabilize time-sensitive test results.
+
 ## Need Help?
 
 If you have any questions or need assistance, our support team is here to help. You can reach out to us through our support portal, Slack or by emailing us.

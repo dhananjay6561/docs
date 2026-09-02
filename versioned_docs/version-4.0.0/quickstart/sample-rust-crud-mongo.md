@@ -138,3 +138,9 @@ We get the following output in the terminal -
 
 <img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/img/rust-mongo-rest-test-run-2.webp" alt="TestRun" width="1690" height="1095" style={{maxWidth:'100%',height:'auto'}} />
 _Voila!! Our testcases has passed 🌟_
+
+## Related
+
+- [GraphQL Application with MongoDB](/docs/quickstart/samples-rust/) — another Rust + MongoDB sample.
+- [Rust Sample Application](/docs/quickstart/samples-rust-wrap/) — Rust wrap-mode sample.
+- [Sample Rust Apps](/docs/quickstart/rust-filter/) — browse all Rust quickstarts.

@@ -170,3 +170,10 @@ After updating `keploy.yml` with the above configuration, rerun your tests, and 
 ## Wrapping Up 🎉
 
 Fantastic! You've successfully navigated creating and testing XML APIs with Spring Boot and Keploy. Keep exploring, experimenting, and innovating! If you have any queries, we're here to help!
+
+## Related
+
+- [Sample Java Apps](/docs/quickstart/java-springboot-filter/) — browse more Java samples.
+- [Sample Rest API with Spring-Boot and MongoDB](/docs/quickstart/java-spring-boot-mongo/) — Spring Boot with MongoDB.
+- [Keploy Integration with PetClinic App](/docs/quickstart/pet-clinic/) — Spring Boot with Postgres.
+- [Java Sample Application](/docs/quickstart/samples-java/) — another Java sample.

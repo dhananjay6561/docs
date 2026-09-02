@@ -338,3 +338,9 @@ Here `delay` is the time it takes for your application to get started, after whi
 ### 🎉 Wrapping it up
 
 Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible. 😊🚀
+
+## Related
+
+- [Sample Rest API with Spring-Boot and MongoDB](/docs/quickstart/java-spring-boot-mongo/) — Spring Boot + Mongo.
+- [Sample REST API with Spring-Boot and XML](/docs/quickstart/java-spring-boot-xml/) — Spring Boot + XML.
+- [Sample Java Apps](/docs/quickstart/java-springboot-filter/) — browse all Java quickstarts.

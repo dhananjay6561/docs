@@ -227,3 +227,10 @@ See [MySQL port detection](../running-keploy/configuration-file.md#mysql-port-de
 If you’re still encountering issues after trying these solutions, feel free to reach out to the Keploy team on [Slack](https://keploy.io/slack).
 
 Happy Testing!
+
+## Related
+
+- [Debugger Guide](/docs/keploy-explained/debugger-guide/) — debug Keploy with the VS Code debugger.
+- [Running Keploy Natively on Windows](/docs/keploy-explained/windows-wsl/) — Windows setup and fixes.
+- [Running Keploy Natively on MacOS by setting up a linux env](/docs/keploy-explained/mac-linux/) — macOS setup with Lima.
+- [API Testing — Frequently Asked Questions](/docs/keploy-explained/api-testing-faq/) — common API testing questions.

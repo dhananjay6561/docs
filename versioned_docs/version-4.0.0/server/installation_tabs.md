@@ -968,3 +968,9 @@ You’ve successfully set up **Keploy on Windows** using **Docker**.
 
 </TabItem>
 </Tabs>
+
+## Related
+
+- [Keploy Local Installation](/docs/server/install/) — the quick local install.
+- [Keploy Go SDK — Install & Merge Test Coverage](/docs/server/sdk-installation/go/) — set up a language SDK.
+- [Keploy CLI Commands](/docs/running-keploy/cli-commands/) — commands to run after installing.

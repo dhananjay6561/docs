@@ -82,6 +82,14 @@ Keploy enhances the unit testing process by providing automated test case genera
 
 By incorporating Keploy into their testing workflows, developers can detect errors early in the development process, ensure comprehensive test coverage, and collaborate effectively with their teams to drive continuous improvement in testing practices. With its innovative features and seamless integration capabilities, Keploy empowers developers to write better code and deliver high-quality software products with confidence.
 
+## Related Terms
+
+- [Unit Test Automation](/docs/concepts/reference/glossary/unit-test-automation/) — automate running your unit tests.
+- [Test-Driven Development](/docs/concepts/reference/glossary/test-driven-development/) — write unit tests before code.
+- [Mocks](/docs/concepts/reference/glossary/mocks/) — isolate the unit under test.
+- [Integration Testing](/docs/concepts/reference/glossary/integration-testing/) — verify units work together.
+- [Browse all testing terms](/docs/concepts/reference/glossary/) — the full Keploy glossary.
+
 ## FAQs
 
 ### 1. **What is Unit Testing?**

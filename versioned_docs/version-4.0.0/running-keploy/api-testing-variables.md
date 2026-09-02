@@ -33,7 +33,7 @@ To reuse data, you define a mapping that tells Keploy exactly where to look in a
 
 Injection allows you to replace static values with dynamic variables, ensuring your tests remain flexible across different environments and data states.
 
-<img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/img/var-injection.webp" width="920" height="878" />
+<img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/img/var-injection.webp" alt="Injecting a dynamic variable into a Keploy API test request" width="920" height="878" />
 
 **Example Context:** This view shows the **Request Details** for an API call to the `/owners` endpoint. By defining the method (e.g., **POST**), you can then use placeholders like `{{owner_id}}` in the URL path or body. Keploy will automatically swap the placeholder with the actual value captured during test execution.
 
@@ -41,6 +41,13 @@ Injection allows you to replace static values with dynamic variables, ensuring y
 
 Global variables serve as the centralized source of truth for your testing environment.
 
-<img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/img/global-vars.webp" width="910" height="1328" />
+<img src="https://keploy-devrel.s3.us-west-2.amazonaws.com/docs/webp-s3/img/global-vars.webp" alt="Configuring global variables in Keploy API testing" width="910" height="1328" />
 
 **Example Context:** The **Global Variables** dashboard allows you to manage workspace-wide data. This includes static entries like the **base URL** and dynamic **Global Custom Functions**. For instance, `generateCompanyId()` is a function that returns a unique string starting with `COMP_` followed by a timestamp, ensuring unique identifiers for every test run.
+
+## Related
+
+- [Functions & Schema Assertions](/docs/running-keploy/api-testing-functions/) — pair variables with custom functions.
+- [Custom Assertions](/docs/running-keploy/api-testing-custom-assertions/) — assert against captured variable values.
+- [Editing Test Suites and Custom Assertions](/docs/running-keploy/api-testing-edit-assertions/) — where variables are configured.
+- [Authentication Setup for API Testing](/docs/running-keploy/api-testing-auth-setup/) — inject tokens as global variables.
